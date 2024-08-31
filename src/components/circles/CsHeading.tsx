@@ -1,6 +1,6 @@
 type Props = {
   heading: string;
-  description: string;
+  description?: string;
   level?: "h1";
 };
 
@@ -13,7 +13,7 @@ const CsHeading = (props: Props) => {
         {heading}
       </h1>
       {description && (
-        <p className="text-sm text-muted-foreground">{description}</p>
+        <p className="text-sm text-muted-foreground mt-2">{description}</p>
       )}
     </div>
   );
