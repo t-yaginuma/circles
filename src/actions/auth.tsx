@@ -41,6 +41,5 @@ export async function getUser() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  console.log("user");
-  console.log(user);
+  return user;
 }
