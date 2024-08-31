@@ -4,40 +4,12 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 // const inter = Inter({ subsets: ["latin"] });
 import Link from "next/link";
-import {
-  Bell,
-  CircleUser,
-  Home,
-  LineChart,
-  Menu,
-  Package,
-  Package2,
-  Search,
-  ShoppingCart,
-  Users,
-} from "lucide-react";
-
-import { Badge } from "@/components/ui/badge";
+import { Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CsSidebar } from "@/components/circles/CsSidebar";
 import { CsHeader } from "@/components/circles/CsHeader";
+import { CsHeading } from "@/components/circles/CsHeading";
+
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -50,8 +22,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  currentPage,
 }: Readonly<{
   children: React.ReactNode;
+  currentPage: CurrentPage;
 }>) {
   return (
     <html lang="en">
@@ -61,37 +35,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-          <div className="hidden border-r bg-muted/40 md:block">
-            <div className="flex h-full max-h-screen flex-col gap-2">
-              <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-                <Link
-                  href="/"
-                  className="flex items-center gap-2 font-semibold"
-                >
-                  <span className="">Circles</span>
-                </Link>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="ml-auto h-8 w-8"
-                >
-                  <Bell className="h-4 w-4" />
-                  <span className="sr-only">Toggle notifications</span>
-                </Button>
-              </div>
-              <div className="flex-1">
-                <CsSidebar></CsSidebar>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col">
-            <CsHeader></CsHeader>
-            <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
-              {children}
-            </main>
-          </div>
-        </div>
+        {children}
       </body>
     </html>
   );

@@ -14,7 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export function LoginForm() {
+export default function SignUp() {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>

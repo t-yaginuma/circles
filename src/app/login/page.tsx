@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CsForm } from "@/components/circles/CsForm";
 
-export default function LoginForm() {
+export default function Login() {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>

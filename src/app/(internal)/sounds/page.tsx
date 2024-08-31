@@ -1,5 +1,3 @@
-x
-
 export default function App() {
 
   return (
