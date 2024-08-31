@@ -16,16 +16,16 @@ import { Button } from "../ui/button";
 import { uploadFile } from "@/actions/files";
 import { CsButton } from "./CsButton";
 
-type Props = {
-  trigger?: React.ReactElement;
-};
+type Props = {};
 
 const CsDrawerUserEdit = (props: Props) => {
-  const { trigger } = props;
+  const {} = props;
 
   return (
     <Drawer>
-      <DrawerTrigger>{trigger}</DrawerTrigger>
+      <DrawerTrigger>
+        <CsButton className="fixed bottom-8 right-8" text="Edit Profile" />
+      </DrawerTrigger>
       <DrawerContent>
         <CsForm action={uploadFile}>
           <div className="m-auto w-[640px]">

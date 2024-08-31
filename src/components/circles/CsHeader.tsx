@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {
+  Inbox,
   CircleUser,
   Home,
   LineChart,
@@ -38,7 +39,7 @@ import { CsDrawerSignUp } from "@/components/circles/CsDrawerSignUp";
 const CsHeader = () => {
   return (
     <>
-      <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+      <header className="fixed top-0 w-screen backdrop-blur flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
         <Sheet>
           <SheetTrigger asChild>
             <Button
@@ -116,6 +117,11 @@ const CsHeader = () => {
             </div>
           </SheetContent>
         </Sheet>
+        <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
+          <Link href="/home">
+            <span className="text-3xl font-federal text-orange">Circles</span>
+          </Link>
+        </div>
         <div className="w-full flex-1">
           <form>
             <div className="relative">
@@ -128,16 +134,15 @@ const CsHeader = () => {
             </div>
           </form>
         </div>
-        <CsDrawerSignUp
-          title="Sign up"
-          description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nos"
-          trigger={<CsButton text="Sign up" variant="link" />}
-        />
-        <CsDrawerLogin
-          title="Login"
-          description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nos"
-          trigger={<CsButton text="Login" variant="link" />}
-        />
+        <CsDrawerSignUp />
+        <CsDrawerLogin />
+        <Link href="/messages">
+          <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
+            <Inbox className="h-4 w-4" />
+            <span className="sr-only">Toggle notifications</span>
+          </Button>
+        </Link>
+
         <CsProfile />
       </header>
     </>

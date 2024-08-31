@@ -17,16 +17,17 @@ import { CsInput } from "./CsInput";
 import { CsRadioGroup } from "./CsRadioGroup";
 import { CsButton } from "./CsButton";
 
-type Props = {
-  trigger?: React.ReactElement;
-};
+type Props = {};
 
 const CsDrawerCircle = (props: Props) => {
-  const { trigger } = props;
-
   return (
     <Drawer>
-      <DrawerTrigger>{trigger}</DrawerTrigger>
+      <DrawerTrigger>
+        <CsButton
+          className="fixed bottom-8 right-8"
+          text="Establish New Circle"
+        />
+      </DrawerTrigger>
       <DrawerContent>
         <CsForm action={uploadFile}>
           <div className="m-auto w-[640px]">

@@ -12,11 +12,11 @@ const CsRow = (props: Props) => {
     <>
       <div
         className={classNames(
-          "flex",
-          { "gap-x-1": gap === "xs" },
-          { "gap-x-2": gap === "sm" },
-          { "gap-x-4": gap === "md" },
-          { "gap-x-6": gap === "lg" }
+          "flex flex-wrap",
+          { "gap-1": gap === "xs" },
+          { "gap-2": gap === "sm" },
+          { "gap-4": gap === "md" },
+          { "gap-6": gap === "lg" }
         )}
       >
         {children}
