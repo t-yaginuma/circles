@@ -1,0 +1,1 @@
+type CurrentPage = "dashboard" | "explore";
