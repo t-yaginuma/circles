@@ -40,12 +40,33 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { CsHeading } from "@/components/circles/CsHeading";
+import { CsMain } from "@/components/layouts/CsMain";
 
 export default function Dashboard() {
   return (
-    <>
+    <CsMain>
       <CsHeading heading="DashBoard" />
       <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
+        <ul>
+          <li>
+            <Link href="/">Langing page</Link>
+          </li>
+          <li>
+            <Link href="/make-your-circle">upload music incomplete</Link>
+          </li>
+          <li>
+            <Link href="/make-your-circle">make your circle incomplete</Link>
+          </li>
+          <li>
+            <Link href="/sign-up">sign up incomplete</Link>
+          </li>
+          <li>
+            <Link href="/login">sign in incomplete</Link>
+          </li>
+          <li>
+            <Link href="/upload">song upload</Link>
+          </li>
+        </ul>
         <Card x-chunk="dashboard-01-chunk-0">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
@@ -298,6 +319,6 @@ export default function Dashboard() {
           </CardContent>
         </Card>
       </div>
-    </>
+    </CsMain>
   );
 }

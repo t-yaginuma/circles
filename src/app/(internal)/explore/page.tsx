@@ -1,39 +1,47 @@
+import { uploadFile } from "@/actions/files";
+import { CsButton } from "@/components/circles/CsButton";
+import { CsCircleCard } from "@/components/circles/CsCircleCard";
+import { CsDrawerCircle } from "@/components/circles/CsDrawerCircle";
+import { CsFileUploader } from "@/components/circles/CsFileUploader";
+import { CsForm } from "@/components/circles/CsForm";
 import { CsHeading } from "@/components/circles/CsHeading";
-import Link from "next/link";
+import { CsInput } from "@/components/circles/CsInput";
+import { CsRadioGroup } from "@/components/circles/CsRadioGroup";
+import { CsMain } from "@/components/layouts/CsMain";
+import { CsRow } from "@/components/layouts/CsRow";
+import { CsStack } from "@/components/layouts/CsStack";
+import { Button } from "@/components/ui/button";
 
 export default function Explore() {
   return (
-    <>
+    <CsMain>
       <CsHeading heading="Explore" />
-      <ul>
-        <li>
-          <Link href="/">Langing page</Link>
-        </li>
-        <li>
-          <Link href="/open1">Open1 incomplete</Link>
-        </li>
-        <li>
-          <Link href="/vancouver">Vancouver incomplete</Link>
-        </li>
-        <li>
-          <Link href="/trane">Trane. incomplete</Link>
-        </li>
-        <li>
-          <Link href="/make-your-circle">upload music incomplete</Link>
-        </li>
-        <li>
-          <Link href="/make-your-circle">make your circle incomplete</Link>
-        </li>
-        <li>
-          <Link href="/sign-up">sign up incomplete</Link>
-        </li>
-        <li>
-          <Link href="/login">sign in incomplete</Link>
-        </li>
-        <li>
-          <Link href="/upload">song upload</Link>
-        </li>
-      </ul>
-    </>
+      <div>
+        <CsRow gap="lg">
+          <CsCircleCard
+            name="Open1"
+            href="/open1"
+            image="https://placehold.jp/150x150.png"
+            description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
+          />
+          <CsCircleCard
+            name="Trane"
+            href="/trane"
+            image="https://placehold.jp/150x150.png"
+            description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
+          />
+          <CsCircleCard
+            name="vancouver"
+            href="/vancouver"
+            image="https://placehold.jp/150x150.png"
+            description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
+          />
+        </CsRow>
+      </div>
+
+      <CsDrawerCircle
+        trigger={<CsButton text="Establish New Circle" />}
+      ></CsDrawerCircle>
+    </CsMain>
   );
 }

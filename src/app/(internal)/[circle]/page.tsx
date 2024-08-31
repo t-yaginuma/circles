@@ -7,10 +7,11 @@ import { CsHeading } from "@/components/circles/CsHeading";
 import { CsRadioGroup } from "@/components/circles/CsRadioGroup";
 import { uploadFile } from "@/actions/files";
 import { CsStack } from "@/components/layouts/CsStack";
+import { CsMain } from "@/components/layouts/CsMain";
 
 export default function Circle() {
   return (
-    <>
+    <CsMain>
       <CsHeading heading="Trane." />
       <div>
         <div>
@@ -19,12 +20,7 @@ export default function Circle() {
           <CsMusicPlayer></CsMusicPlayer>
         </div>
         <div>chat</div>
-        <div></div>
-        <CsStack gap="lg">
-
-
-        </CsStack>
       </div>
-    </>
+    </CsMain>
   );
 }

@@ -41,7 +41,7 @@ export default function RootLayout({
               <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
                 <Link
                   href="/"
-                  className="flex items-center gap-2 font-semibold"
+                  className="flex items-center gap-2 text-3xl font-federal"
                 >
                   <span className="">Circles</span>
                 </Link>
@@ -61,9 +61,7 @@ export default function RootLayout({
           </div>
           <div className="flex flex-col h-full">
             <CsHeader />
-            <main className="flex flex-1 flex-col flex-grow gap-4 p-4 lg:gap-6 lg:p-6">
-              {children}
-            </main>
+            {children}
           </div>
         </div>
       </body>
