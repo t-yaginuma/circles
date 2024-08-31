@@ -8,19 +8,35 @@ import { CsRadioGroup } from "@/components/circles/CsRadioGroup";
 import { uploadFile } from "@/actions/files";
 import { CsStack } from "@/components/layouts/CsStack";
 import { CsMain } from "@/components/layouts/CsMain";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
+import { CsDrawerCircle } from "@/components/circles/CsDrawerCircle";
+import { CsButton } from "@/components/circles/CsButton";
+import { CsDrawerUploadMusic } from "@/components/circles/CsDrawerUploadMusic";
 
 export default function Circle() {
   return (
     <CsMain>
       <CsHeading heading="Trane." />
-      <div>
-        <div>
-          <CsMusicPlayer></CsMusicPlayer>
-          <CsMusicPlayer></CsMusicPlayer>
-          <CsMusicPlayer></CsMusicPlayer>
-        </div>
-        <div>chat</div>
-      </div>
+      <ResizablePanelGroup direction="horizontal">
+        <ResizablePanel>
+          <div>
+            <div>
+              <CsMusicPlayer></CsMusicPlayer>
+              <CsMusicPlayer></CsMusicPlayer>
+              <CsMusicPlayer></CsMusicPlayer>
+            </div>
+            <CsDrawerUploadMusic />
+          </div>
+        </ResizablePanel>
+        <ResizableHandle />
+        <ResizablePanel>
+          <div>chat</div>
+        </ResizablePanel>
+      </ResizablePanelGroup>
     </CsMain>
   );
 }

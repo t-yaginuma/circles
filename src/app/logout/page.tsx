@@ -1,4 +1,5 @@
 import { CsHeading } from "@/components/circles/CsHeading";
+import { CsTextLink } from "@/components/circles/CsTextLink";
 import { CsMain } from "@/components/layouts/CsMain";
 import Link from "next/link";
 
@@ -12,7 +13,7 @@ export default function Logout() {
 
       <ul>
         <li>
-          <Link href="/">back to top page</Link>
+          <CsTextLink href="/" text="back to top page" />
         </li>
       </ul>
     </CsMain>

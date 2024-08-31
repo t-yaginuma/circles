@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { CsSidebar } from "@/components/circles/CsSidebar";
 import { CsHeader } from "@/components/circles/CsHeader";
 import { CsHeading } from "@/components/circles/CsHeading";
+import { CsFooter } from "@/components/circles/CsFooter";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -35,34 +36,16 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
+        <CsHeader />
         <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
           <div className="hidden border-r bg-muted/40 md:block">
             <div className="flex h-full max-h-screen flex-col gap-2">
-              <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-                <Link
-                  href="/"
-                  className="flex items-center gap-2 text-3xl font-federal"
-                >
-                  <span className="">Circles</span>
-                </Link>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="ml-auto h-8 w-8"
-                >
-                  <Bell className="h-4 w-4" />
-                  <span className="sr-only">Toggle notifications</span>
-                </Button>
-              </div>
               <div className="flex-1">
                 <CsSidebar currentPage={currentPage} />
               </div>
             </div>
           </div>
-          <div className="flex flex-col h-full">
-            <CsHeader />
-            {children}
-          </div>
+          <div className="flex flex-col h-full pt-16">{children}</div>
         </div>
       </body>
     </html>

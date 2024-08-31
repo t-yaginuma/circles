@@ -16,7 +16,7 @@ export default function Profile() {
         heading="Profile"
         description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip "
       />
-      <CsDrawerUserEdit trigger={<CsButton text="Establish New Circle" />} />
+      <CsDrawerUserEdit />
     </CsMain>
   );
 }

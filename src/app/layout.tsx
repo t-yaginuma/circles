@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { CsSidebar } from "@/components/circles/CsSidebar";
 import { CsHeader } from "@/components/circles/CsHeader";
 import { CsHeading } from "@/components/circles/CsHeading";
+import { CsFooter } from "@/components/circles/CsFooter";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -35,7 +36,11 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        {children}
+        <CsHeader />
+        <div className="pt-16">
+          {children}
+          <CsFooter />
+        </div>
       </body>
     </html>
   );

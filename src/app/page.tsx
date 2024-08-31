@@ -1,10 +1,10 @@
 import { getUser } from "@/actions/auth";
 import { CsHeading } from "@/components/circles/CsHeading";
+import { CsTextLink } from "@/components/circles/CsTextLink";
 import { CsMain } from "@/components/layouts/CsMain";
 import Link from "next/link";
 
 export default function Home() {
-  
   return (
     <CsMain>
       <CsHeading
@@ -14,7 +14,7 @@ export default function Home() {
 
       <ul>
         <li>
-          <Link href="/explore">Find your Circle</Link>
+          <CsTextLink href="/explore" text="Find your Circle" />
         </li>
       </ul>
     </CsMain>

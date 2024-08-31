@@ -36,12 +36,46 @@ export default function Explore() {
             image="https://placehold.jp/150x150.png"
             description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
           />
+          <CsCircleCard
+            name="vancouver"
+            href="/vancouver"
+            image="https://placehold.jp/150x150.png"
+            description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
+          />
+          <CsCircleCard
+            name="vancouver"
+            href="/vancouver"
+            image="https://placehold.jp/150x150.png"
+            description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
+          />
+          <CsCircleCard
+            name="vancouver"
+            href="/vancouver"
+            image="https://placehold.jp/150x150.png"
+            description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
+          />
+          <CsCircleCard
+            name="vancouver"
+            href="/vancouver"
+            image="https://placehold.jp/150x150.png"
+            description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
+          />
+          <CsCircleCard
+            name="vancouver"
+            href="/vancouver"
+            image="https://placehold.jp/150x150.png"
+            description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
+          />
+          <CsCircleCard
+            name="vancouver"
+            href="/vancouver"
+            image="https://placehold.jp/150x150.png"
+            description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
+          />
         </CsRow>
       </div>
 
-      <CsDrawerCircle
-        trigger={<CsButton text="Establish New Circle" />}
-      ></CsDrawerCircle>
+      <CsDrawerCircle />
     </CsMain>
   );
 }
