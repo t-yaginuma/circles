@@ -31,6 +31,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CsProfile } from "@/components/circles/CsProfile";
+import { CsButton } from "@/components/circles/CsButton";
+import { CsDrawerLogin } from "@/components/circles/CsDrawerLogin";
+import { CsDrawerSignUp } from "@/components/circles/CsDrawerSignUp";
 
 const CsHeader = () => {
   return (
@@ -125,7 +128,17 @@ const CsHeader = () => {
             </div>
           </form>
         </div>
-        <CsProfile></CsProfile>
+        <CsDrawerSignUp
+          title="Sign up"
+          description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nos"
+          trigger={<CsButton text="Sign up" variant="link" />}
+        />
+        <CsDrawerLogin
+          title="Login"
+          description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nos"
+          trigger={<CsButton text="Login" variant="link" />}
+        />
+        <CsProfile />
       </header>
     </>
   );

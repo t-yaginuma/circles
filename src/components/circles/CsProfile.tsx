@@ -32,7 +32,7 @@ const CsProfile = (props: Props) => {
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <Link href="/settings">Settings</Link>
+            <Link href="/profile">Your Profile</Link>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
