@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Inter as FontSans, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-// const inter = Inter({ subsets: ["latin"] });
-import Link from "next/link";
-import { Bell } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { CsSidebar } from "@/components/circles/CsSidebar";
+const inter = Inter({ subsets: ["latin"] });
 import { CsHeader } from "@/components/circles/CsHeader";
-import { CsHeading } from "@/components/circles/CsHeading";
 import { CsFooter } from "@/components/circles/CsFooter";
+import { Toaster } from "@/components/ui/toaster";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -23,10 +19,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  currentPage,
 }: Readonly<{
   children: React.ReactNode;
-  currentPage: CurrentPage;
 }>) {
   return (
     <html lang="en">
@@ -37,10 +31,9 @@ export default function RootLayout({
         )}
       >
         <CsHeader />
-        <div className="pt-16">
-          {children}
-          <CsFooter />
-        </div>
+        {children}
+        <CsFooter />
+        <Toaster />
       </body>
     </html>
   );

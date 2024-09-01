@@ -1,20 +1,5 @@
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
-import "../globals.css";
-import { cn } from "@/lib/utils";
-// const inter = Inter({ subsets: ["latin"] });
-import Link from "next/link";
-import { Bell } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { CsSidebar } from "@/components/circles/CsSidebar";
-import { CsHeader } from "@/components/circles/CsHeader";
-import { CsHeading } from "@/components/circles/CsHeading";
-import { CsFooter } from "@/components/circles/CsFooter";
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,25 +14,10 @@ export default function RootLayout({
   currentPage: CurrentPage;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
-        <CsHeader />
-        <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-          <div className="hidden border-r bg-muted/40 md:block">
-            <div className="flex h-full max-h-screen flex-col gap-2">
-              <div className="flex-1">
-                <CsSidebar currentPage={currentPage} />
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col h-full pt-16">{children}</div>
-        </div>
-      </body>
-    </html>
+    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+      <CsSidebar currentPage={currentPage} />
+
+      <div className="flex flex-col h-full">{children}</div>
+    </div>
   );
 }
