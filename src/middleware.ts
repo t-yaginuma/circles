@@ -4,11 +4,11 @@ import { getUser } from "@/actions/auth";
 
 export async function middleware(request: NextRequest) {
   // update user's auth session
-  const test = await getUser();
-  console.log("==========");
-  console.log(test);
-  const path = new URL(request.url).pathname;
-  console.log(path);
+  // const test = await getUser();
+  // console.log("==========");
+  // console.log(test);
+  // const path = new URL(request.url).pathname;
+  // console.log(path);
   // console.log("hit");
   // console.log(test);
   // return await updateSession(request);

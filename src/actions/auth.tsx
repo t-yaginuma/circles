@@ -3,21 +3,26 @@
 import { supabase } from "@/lib/supabase";
 
 export async function signUp(formData: FormData) {
-  console.log("HITTTT");
+  console.log("------------");
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+  console.log(email);
+  console.log(password);
   const { data, error } = await supabase.auth.signUp({
-    email: "toru45s@gmail.com",
-    password: "adminadmin",
+    email: email,
+    password: password,
   });
 
   console.log(data);
-  console.log(error);
+  console.log(error?.code);
+  if (error) {
+    return error?.code;
+  } else {
+    return "success";
+  }
 }
 
 export async function signIn(formData: FormData) {
-  console.log("()=> HITTTT");
-  console.log(formData.get("email"));
-  console.log(formData.get("password"));
-
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
 
@@ -26,9 +31,14 @@ export async function signIn(formData: FormData) {
     password: password,
   });
 
-  console.log(data);
-  console.log(error);
-  getUser();
+  if (error) {
+    return {
+      status: error.status,
+      code: error.code,
+    };
+  } else {
+    return "success";
+  }
 }
 
 export async function signOut() {
@@ -40,6 +50,7 @@ export async function getUser() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-
+  ("user------------");
+  console.log(user);
   return user;
 }
