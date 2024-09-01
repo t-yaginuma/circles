@@ -1,24 +1,18 @@
 import { Checkbox } from "@/components/ui/checkbox";
+import { Separator } from "@/components/ui/separator";
 
-type Props = {
-  isInternal?: boolean;
-};
+type Props = {};
 
 const CsFooter = (props: Props) => {
-  const { isInternal } = props;
+  const {} = props;
 
   return (
     <>
       <footer className="w-full">
-        {isInternal ? (
-          <div>
-            <p className="font-federal text-orange">Trane LLC.</p>
-          </div>
-        ) : (
-          <div className="w-full lg:p-6">
-            <p className="font-federal text-orange">Trane LLC.</p>
-          </div>
-        )}
+        <Separator />
+        <div className="w-full p-6">
+          <p className="">©Trane LLC 2025</p>
+        </div>
       </footer>
     </>
   );

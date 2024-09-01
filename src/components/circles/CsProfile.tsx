@@ -1,3 +1,5 @@
+"use client";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,6 +12,9 @@ import Link from "next/link";
 import { CircleUser } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { signOut, getUser } from "@/actions/auth";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
 
 type Props = {
   // children: React.ReactNode;
@@ -18,6 +23,31 @@ type Props = {
 
 const CsProfile = (props: Props) => {
   const {} = props;
+  const router = useRouter();
+  const { toast } = useToast();
+
+  const logoutHandle = async (e) => {
+    e.preventDefault();
+
+    const user = getUser();
+    user.then((u) => {
+      console.log(u);
+    });
+
+    await signOut();
+
+    const user2 = getUser();
+    user2.then((u) => {
+      console.log(u);
+    });
+
+    toast({
+      title: "You logged-out successfully!",
+      // description: "Friday, February 10, 2023 at 5:57 PM",
+    });
+    const href = "/logout";
+    router.push(href);
+  };
 
   return (
     <>
@@ -36,7 +66,9 @@ const CsProfile = (props: Props) => {
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <Link href="/logout">Logout</Link>
+            <Link href="#" onClick={logoutHandle}>
+              Logout
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

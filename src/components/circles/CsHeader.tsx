@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   Inbox,
@@ -21,25 +23,21 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CsProfile } from "@/components/circles/CsProfile";
 import { CsButton } from "@/components/circles/CsButton";
 import { CsDrawerLogin } from "@/components/circles/CsDrawerLogin";
 import { CsDrawerSignUp } from "@/components/circles/CsDrawerSignUp";
+import { useStore } from "@/store/zustand";
 
 const CsHeader = () => {
+  const bears = useStore((state) => state.bears);
+  const increaseBear = useStore((state) => state.increaseBear);
+
   return (
     <>
-      <header className="fixed top-0 w-screen backdrop-blur flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+      <header className="sticky top-0 w-screen backdrop-blur flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
         <Sheet>
           <SheetTrigger asChild>
             <Button
@@ -118,7 +116,7 @@ const CsHeader = () => {
           </SheetContent>
         </Sheet>
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-          <Link href="/home">
+          <Link href="/">
             <span className="text-3xl font-federal text-orange">Circles</span>
           </Link>
         </div>
@@ -134,15 +132,16 @@ const CsHeader = () => {
             </div>
           </form>
         </div>
-        <CsDrawerSignUp />
-        <CsDrawerLogin />
+        <CsDrawerSignUp textTrigger="Sign Up" />
+        <CsDrawerLogin textTrigger="Login" />
         <Link href="/messages">
           <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
             <Inbox className="h-4 w-4" />
             <span className="sr-only">Toggle notifications</span>
           </Button>
         </Link>
-
+        <div>🐻: {bears}</div>
+        <button onClick={() => increaseBear(1)}>+ 1</button>
         <CsProfile />
       </header>
     </>

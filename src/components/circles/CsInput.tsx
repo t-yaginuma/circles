@@ -6,10 +6,18 @@ type Props = {
   type?: string;
   placeholder?: string;
   isRequired?: boolean;
+  autoComplete?: "off";
 };
 
 const CsInput = (props: Props) => {
-  const { label, name, placeholder, type = "text", isRequired = true } = props;
+  const {
+    label,
+    name,
+    placeholder,
+    type = "text",
+    isRequired = true,
+    autoComplete = "off",
+  } = props;
 
   return (
     <>
@@ -20,6 +28,7 @@ const CsInput = (props: Props) => {
           type={type}
           required={isRequired}
           placeholder={placeholder}
+          autoComplete={autoComplete}
         />
       </div>
     </>
