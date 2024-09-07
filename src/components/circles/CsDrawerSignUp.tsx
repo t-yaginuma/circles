@@ -19,22 +19,17 @@ import { CsButton } from "./CsButton";
 import { CsCheckbox } from "./CsCheckbox";
 import { CsDrawerLogin } from "./CsDrawerLogin";
 import { useState } from "react";
+import { useStore } from "@/store/zustand";
 
-type Props = {
-  isInContent?: boolean;
-  textTrigger: string;
-};
+type Props = {};
 
 const CsDrawerSignUp = (props: Props) => {
-  const { textTrigger, isInContent } = props;
+  const {} = props;
+  const store = useStore();
   const [isChecked, setIsChecked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-
-  const classNamesTrigger = isInContent
-    ? "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary underline-offset-4 hover:underline ml-0 mr-auto"
-    : "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary underline-offset-4 hover:underline h-10 px-4 py-2";
 
   const handleAction = async (formData: FormData) => {
     setIsLoading(true);
@@ -48,9 +43,10 @@ const CsDrawerSignUp = (props: Props) => {
   };
 
   return (
-    <Drawer open={isOpen} onOpenChange={setIsOpen}>
-      <DrawerTrigger className={classNamesTrigger}>{textTrigger}</DrawerTrigger>
-
+    <Drawer
+      open={store.isSignUpModalOpen}
+      onOpenChange={store.setIsSignUpModalOpen}
+    >
       <DrawerContent>
         <CsForm action={handleAction}>
           <div className="m-auto w-[640px] py-8">
@@ -102,11 +98,12 @@ const CsDrawerSignUp = (props: Props) => {
                 </CsStack>
 
                 <CsStack gap="xs">
-                  <CsDrawerLogin
-                    textTrigger="Already have an account?"
-                    isInContent
+                  <CsTextLink
+                    text="Already have an account?"
+                    href="#"
                     onClick={() => {
-                      setIsOpen(false);
+                      store.setIsSignUpModalOpen(false);
+                      store.setIsLoginModalOpen(true);
                     }}
                   />
                 </CsStack>

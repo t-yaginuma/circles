@@ -1,5 +1,9 @@
 "use client";
 import WavesurferPlayer from "@wavesurfer/react";
+import WaveSurfer, {
+  type WaveSurferEvents,
+  type WaveSurferOptions,
+} from "wavesurfer.js";
 import { useState } from "react";
 
 type Props = {
@@ -9,10 +13,10 @@ type Props = {
 
 const CsMusicPlayer = (props: Props) => {
   const {} = props;
-  const [wavesurfer, setWavesurfer] = useState(null);
+  const [wavesurfer, setWavesurfer] = useState<WaveSurfer | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const onReady = (ws) => {
+  const onReady = (ws: WaveSurfer) => {
     setWavesurfer(ws);
     setIsPlaying(false);
   };

@@ -32,8 +32,8 @@ import { CsDrawerSignUp } from "@/components/circles/CsDrawerSignUp";
 import { useStore } from "@/store/zustand";
 
 const CsHeader = () => {
-  const bears = useStore((state) => state.bears);
-  const increaseBear = useStore((state) => state.increaseBear);
+  const state = useStore();
+  const setIsLoginModalOpen = useStore((state) => state.setIsLoginModalOpen);
 
   return (
     <>
@@ -121,7 +121,7 @@ const CsHeader = () => {
           </Link>
         </div>
         <div className="w-full flex-1">
-          <form>
+          {/* <form>
             <div className="relative">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
@@ -130,19 +130,49 @@ const CsHeader = () => {
                 className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
               />
             </div>
-          </form>
+          </form> */}
         </div>
-        <CsDrawerSignUp textTrigger="Sign Up" />
-        <CsDrawerLogin textTrigger="Login" />
-        <Link href="/messages">
-          <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
-            <Inbox className="h-4 w-4" />
-            <span className="sr-only">Toggle notifications</span>
-          </Button>
-        </Link>
-        <div>🐻: {bears}</div>
-        <button onClick={() => increaseBear(1)}>+ 1</button>
-        <CsProfile />
+
+        {(() => {
+          if (state.isAuthenticated) {
+            return (
+              <>
+                <Link href="/messages">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="ml-auto h-8 w-8"
+                  >
+                    <Inbox className="h-4 w-4" />
+                    <span className="sr-only">Toggle notifications</span>
+                  </Button>
+                </Link>
+                <CsProfile />
+              </>
+            );
+          } else {
+            return (
+              <>
+                <CsButton
+                  type="button"
+                  variant="link"
+                  text="Sign up"
+                  onClick={() => {
+                    state.setIsSignUpModalOpen(true);
+                  }}
+                />
+                <CsButton
+                  type="button"
+                  variant="link"
+                  text="Login"
+                  onClick={() => {
+                    state.setIsLoginModalOpen(true);
+                  }}
+                />
+              </>
+            );
+          }
+        })()}
       </header>
     </>
   );

@@ -22,7 +22,7 @@ import { useStore } from "@/store/zustand";
 
 type Props = {};
 
-const CsDrawerLogin = (props: Props) => {
+const CsDrawerPasswordReIssue = (props: Props) => {
   const {} = props;
   const store = useStore();
   const [message, setMessage] = useState("");
@@ -52,15 +52,17 @@ const CsDrawerLogin = (props: Props) => {
 
   return (
     <Drawer
-      open={store.isLoginModalOpen}
-      onOpenChange={store.setIsLoginModalOpen}
+      open={store.isChangePwModalOpen}
+      onOpenChange={store.setIsChangePwModalOpen}
     >
       <DrawerContent>
         <CsForm action={handleAction}>
           <div className="m-auto w-[640px] py-8">
             <CsStack gap="sm">
               <DrawerHeader>
-                <DrawerTitle className="text-xl">Login</DrawerTitle>
+                <DrawerTitle className="text-xl">
+                  Forgot your password?
+                </DrawerTitle>
               </DrawerHeader>
               <CsStack gap="md" className="px-4">
                 <CsStack gap="md">
@@ -71,35 +73,21 @@ const CsDrawerLogin = (props: Props) => {
                     placeholder="rasta-man@circles.com"
                     isRequired
                   />
-                  <CsInput
-                    name="password"
-                    label="Password"
-                    type="password"
-                    isRequired
-                  />
                 </CsStack>
                 <CsStack>
                   <CsTextLink
-                    text="Don’t have an account?"
+                    text="Already have an account?"
                     href="#"
                     onClick={() => {
-                      store.setIsLoginModalOpen(false);
-                      store.setIsSignUpModalOpen(true);
-                    }}
-                  />
-                  <CsTextLink
-                    text="Forgot Password?"
-                    href="#"
-                    onClick={() => {
-                      store.setIsLoginModalOpen(false);
-                      store.setIsChangePwModalOpen(true);
+                      store.setIsChangePwModalOpen(false);
+                      store.setIsLoginModalOpen(true);
                     }}
                   />
                 </CsStack>
               </CsStack>
 
               <DrawerFooter>
-                <CsButton type="submit" text="Login" />
+                <CsButton type="submit" text="ReIssue My Password" />
                 <DrawerClose asChild>
                   <CsButton type="button" text="Cancel" variant="outline" />
                 </DrawerClose>
@@ -112,4 +100,4 @@ const CsDrawerLogin = (props: Props) => {
   );
 };
 
-export { CsDrawerLogin };
+export { CsDrawerPasswordReIssue };

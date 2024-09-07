@@ -70,9 +70,9 @@ const CsDrawerCircle = (props: Props) => {
               </CsStack>
             </div>
             <DrawerFooter>
-              <CsButton text="Login" />
+              <CsButton type="submit" text="Login" />
               <DrawerClose asChild>
-                <CsButton text="Cancel" variant="outline" />
+                <CsButton type="button" text="Cancel" variant="outline" />
               </DrawerClose>
             </DrawerFooter>
           </div>

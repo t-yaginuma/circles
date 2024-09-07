@@ -58,9 +58,9 @@ const CsDrawerUserEdit = (props: Props) => {
               />
             </CsStack>
             <DrawerFooter>
-              <CsButton text="Update Profile" />
+              <CsButton type="submit" text="Update Profile" />
               <DrawerClose asChild>
-                <CsButton text="Cancel" variant="outline" />
+                <CsButton type="button" text="Cancel" variant="outline" />
               </DrawerClose>
             </DrawerFooter>
           </div>

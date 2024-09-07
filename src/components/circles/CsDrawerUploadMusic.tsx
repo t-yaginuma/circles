@@ -58,9 +58,9 @@ const CsDrawerUploadMusic = (props: Props) => {
                   <Button className="mt-4">Add music</Button>
                 </CsStack>
                 <DrawerFooter>
-                  <CsButton text="Update Profile" />
+                  <CsButton type="submit" text="Update Profile" />
                   <DrawerClose asChild>
-                    <CsButton text="Cancel" variant="outline" />
+                    <CsButton type="button" text="Cancel" variant="outline" />
                   </DrawerClose>
                 </DrawerFooter>
               </CsForm>
