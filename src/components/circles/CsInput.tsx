@@ -15,7 +15,7 @@ const CsInput = (props: Props) => {
     name,
     placeholder,
     type = "text",
-    isRequired = true,
+    isRequired = false,
     autoComplete = "off",
   } = props;
 

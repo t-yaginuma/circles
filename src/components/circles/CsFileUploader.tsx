@@ -1,4 +1,5 @@
 import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 
 type Props = {
   id?: string;
@@ -16,7 +17,7 @@ const CsFileUploader = (props: Props) => {
     <>
       <div className="grid gap-2">
         {label && <Label htmlFor={name}>{label}</Label>}
-        <input id={id} name={name} accept={accept} type="file"></input>
+        <Input id={id} name={name} accept={accept} type="file" />
       </div>
     </>
   );

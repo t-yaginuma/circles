@@ -18,42 +18,45 @@ import { CsTextLink } from "./CsTextLink";
 import { useEffect, useState } from "react";
 import { CsDrawerSignUp } from "@/components/circles/CsDrawerSignUp";
 import { useToast } from "@/hooks/use-toast";
-import { useStore } from "@/store/zustand";
+import { useModalStore } from "@/store/modal-handle";
+import { useAuthStore } from "@/store/auth";
 
 type Props = {};
 
 const CsDrawerLogin = (props: Props) => {
   const {} = props;
-  const store = useStore();
+  const storeModal = useModalStore();
+  const storeAuth = useAuthStore();
   const [message, setMessage] = useState("");
   const { toast } = useToast();
 
   const handleAction = async (formData: FormData) => {
     const test = await signIn(formData);
     console.log("start");
-
     if (test === "success") {
       const user = getUser();
       user.then((test) => {
-        console.log("-------------");
-
-        store.setIsAuthenticated(true);
-        store.setIsLoginModalOpen(false);
-
+        console.log("hit");
+        console.log(storeAuth);
+        storeAuth.setIsAuthenticated(true);
+        storeModal.setIsOpenLoginModal(false);
+        console.log(storeAuth.isAuthenticated);
         toast({
           title: "Logged-in Successfully!",
           // description: "Friday, February 10, 2023 at 5:57 PM",
         });
       });
     } else if (test.code) {
+      console.log("error");
+      console.log(test);
       setMessage(test.code);
     }
   };
 
   return (
     <Drawer
-      open={store.isLoginModalOpen}
-      onOpenChange={store.setIsLoginModalOpen}
+      open={storeModal.isOpenLoginModal}
+      onOpenChange={storeModal.setIsOpenLoginModal}
     >
       <DrawerContent>
         <CsForm action={handleAction}>
@@ -83,16 +86,16 @@ const CsDrawerLogin = (props: Props) => {
                     text="Don’t have an account?"
                     href="#"
                     onClick={() => {
-                      store.setIsLoginModalOpen(false);
-                      store.setIsSignUpModalOpen(true);
+                      storeModal.setIsOpenLoginModal(false);
+                      storeModal.setIsOpenSignUpModal(true);
                     }}
                   />
                   <CsTextLink
                     text="Forgot Password?"
                     href="#"
                     onClick={() => {
-                      store.setIsLoginModalOpen(false);
-                      store.setIsChangePwModalOpen(true);
+                      storeModal.setIsOpenLoginModal(false);
+                      storeModal.setIsOpenPasswordReIssueModal(true);
                     }}
                   />
                 </CsStack>

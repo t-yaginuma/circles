@@ -19,13 +19,13 @@ import { CsButton } from "./CsButton";
 import { CsCheckbox } from "./CsCheckbox";
 import { CsDrawerLogin } from "./CsDrawerLogin";
 import { useState } from "react";
-import { useStore } from "@/store/zustand";
+import { useModalStore } from "@/store/modal-handle";
 
 type Props = {};
 
 const CsDrawerSignUp = (props: Props) => {
   const {} = props;
-  const store = useStore();
+  const store = useModalStore();
   const [isChecked, setIsChecked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -44,8 +44,8 @@ const CsDrawerSignUp = (props: Props) => {
 
   return (
     <Drawer
-      open={store.isSignUpModalOpen}
-      onOpenChange={store.setIsSignUpModalOpen}
+      open={store.isOpenSignUpModal}
+      onOpenChange={store.setIsOpenSignUpModal}
     >
       <DrawerContent>
         <CsForm action={handleAction}>
@@ -102,8 +102,8 @@ const CsDrawerSignUp = (props: Props) => {
                     text="Already have an account?"
                     href="#"
                     onClick={() => {
-                      store.setIsSignUpModalOpen(false);
-                      store.setIsLoginModalOpen(true);
+                      store.setIsOpenSignUpModal(false);
+                      store.setIsOpenLoginModal(true);
                     }}
                   />
                 </CsStack>

@@ -14,9 +14,9 @@ import { CsRow } from "@/components/layouts/CsRow";
 
 type Props = {
   name: string;
-  image: string;
   href: string;
-  description: string;
+  image: string | null;
+  description: string | null;
 };
 
 const CsCircleCard = (props: Props) => {
@@ -27,12 +27,14 @@ const CsCircleCard = (props: Props) => {
       <Link href={href} className="block w-60">
         <Card>
           <div className="w-full h-48 overflow-hidden flex items-center justify-center shadow">
-            <Image
-              src={image}
-              width={240}
-              height={240}
-              alt="Picture of the author"
-            />
+            {image && (
+              <Image
+                src={image}
+                width={240}
+                height={240}
+                alt="Picture of the author"
+              />
+            )}
           </div>
 
           <CardHeader>

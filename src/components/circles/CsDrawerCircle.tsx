@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Drawer,
   DrawerClose,
@@ -16,18 +18,28 @@ import { CsFileUploader } from "./CsFileUploader";
 import { CsInput } from "./CsInput";
 import { CsRadioGroup } from "./CsRadioGroup";
 import { CsButton } from "./CsButton";
+import { postCircles } from "@/actions/circles";
+import { useModalStore } from "@/store/modal-handle";
 
 type Props = {};
 
 const CsDrawerCircle = (props: Props) => {
+  const {} = props;
+  const store = useModalStore();
+
+  const handleAction = async (formData: FormData) => {
+    const test = await postCircles(formData);
+    console.log(test);
+  };
+
   return (
-    <Drawer>
-      <DrawerTrigger className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 fixed bottom-8 right-8">
-        Establish New Circle
-      </DrawerTrigger>
+    <Drawer
+      open={store.isOpenEstablishCircleModal}
+      onOpenChange={store.setIsOpenEstablishCircleModal}
+    >
       <DrawerContent>
-        <CsForm action={uploadFile}>
-          <div className="m-auto w-[640px]">
+        <CsForm action={handleAction}>
+          <div className="m-auto w-[640px] py-8">
             <DrawerHeader>
               <DrawerTitle>Establish New Circle</DrawerTitle>
               <DrawerDescription>
@@ -41,36 +53,36 @@ const CsDrawerCircle = (props: Props) => {
             <div className="p-4">
               <CsStack gap="lg">
                 <CsStack gap="md">
-                  <CsFileUploader
-                    name="artwork"
-                    label="Circle Artwork"
-                    type="image"
-                  ></CsFileUploader>
                   <CsInput
                     name="name"
                     label="Circle Name"
                     type="text"
                     placeholder="Rasta foundation"
+                    isRequired
                   />
                   <CsInput
-                    name="songDescription"
+                    name="description"
                     label="Description"
                     type="text"
                     placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magnai"
                   />
-                  <CsInput
+                  <CsFileUploader
+                    name="image"
+                    label="Circle Artwork"
+                    type="image"
+                  />
+                  {/* <CsInput
                     name="tags"
                     label="tag"
                     type="text"
                     placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod t"
-                  />
-                  <CsRadioGroup name="public" label="Visibility" />
-                  {/* <Button className="mt-4">Establish Your Circle</Button> */}
+                  /> */}
+                  {/* <CsRadioGroup name="publicity" label="Publicity" isRequired /> */}
                 </CsStack>
               </CsStack>
             </div>
             <DrawerFooter>
-              <CsButton type="submit" text="Login" />
+              <CsButton type="submit" text="Establish Circle" />
               <DrawerClose asChild>
                 <CsButton type="button" text="Cancel" variant="outline" />
               </DrawerClose>

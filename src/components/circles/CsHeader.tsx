@@ -29,11 +29,12 @@ import { CsProfile } from "@/components/circles/CsProfile";
 import { CsButton } from "@/components/circles/CsButton";
 import { CsDrawerLogin } from "@/components/circles/CsDrawerLogin";
 import { CsDrawerSignUp } from "@/components/circles/CsDrawerSignUp";
-import { useStore } from "@/store/zustand";
+import { useAuthStore } from "@/store/auth";
+import { useModalStore } from "@/store/modal-handle";
 
 const CsHeader = () => {
-  const state = useStore();
-  const setIsLoginModalOpen = useStore((state) => state.setIsLoginModalOpen);
+  const storeAuth = useAuthStore();
+  const storeModal = useModalStore();
 
   return (
     <>
@@ -134,7 +135,7 @@ const CsHeader = () => {
         </div>
 
         {(() => {
-          if (state.isAuthenticated) {
+          if (storeAuth.isAuthenticated) {
             return (
               <>
                 <Link href="/messages">
@@ -158,7 +159,7 @@ const CsHeader = () => {
                   variant="link"
                   text="Sign up"
                   onClick={() => {
-                    state.setIsSignUpModalOpen(true);
+                    storeModal.setIsOpenSignUpModal(true);
                   }}
                 />
                 <CsButton
@@ -166,7 +167,7 @@ const CsHeader = () => {
                   variant="link"
                   text="Login"
                   onClick={() => {
-                    state.setIsLoginModalOpen(true);
+                    storeModal.setIsOpenLoginModal(true);
                   }}
                 />
               </>

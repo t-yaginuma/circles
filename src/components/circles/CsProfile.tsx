@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { signOut, getUser } from "@/actions/auth";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
-import { useStore } from "@/store/zustand";
+import { useAuthStore } from "@/store/auth";
 
 type Props = {};
 
@@ -23,7 +23,7 @@ const CsProfile = (props: Props) => {
   const {} = props;
   const router = useRouter();
   const { toast } = useToast();
-  const state = useStore();
+  const store = useAuthStore();
 
   const logoutHandle = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -39,7 +39,7 @@ const CsProfile = (props: Props) => {
     user2.then((u) => {
       console.log(u);
     });
-    state.setIsAuthenticated(false);
+    store.setIsAuthenticated(false);
 
     toast({
       title: "You logged-out successfully!",

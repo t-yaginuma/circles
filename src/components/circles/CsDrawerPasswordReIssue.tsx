@@ -18,13 +18,15 @@ import { CsTextLink } from "./CsTextLink";
 import { useEffect, useState } from "react";
 import { CsDrawerSignUp } from "@/components/circles/CsDrawerSignUp";
 import { useToast } from "@/hooks/use-toast";
-import { useStore } from "@/store/zustand";
+import { useModalStore } from "@/store/modal-handle";
+import { useAuthStore } from "@/store/auth";
 
 type Props = {};
 
 const CsDrawerPasswordReIssue = (props: Props) => {
   const {} = props;
-  const store = useStore();
+  const storeModal = useModalStore();
+  const storeAuth = useAuthStore();
   const [message, setMessage] = useState("");
   const { toast } = useToast();
 
@@ -37,8 +39,8 @@ const CsDrawerPasswordReIssue = (props: Props) => {
       user.then((test) => {
         console.log("-------------");
 
-        store.setIsAuthenticated(true);
-        store.setIsLoginModalOpen(false);
+        storeAuth.setIsAuthenticated(true);
+        storeModal.setIsOpenLoginModal(false);
 
         toast({
           title: "Logged-in Successfully!",
@@ -52,8 +54,8 @@ const CsDrawerPasswordReIssue = (props: Props) => {
 
   return (
     <Drawer
-      open={store.isChangePwModalOpen}
-      onOpenChange={store.setIsChangePwModalOpen}
+      open={storeModal.isOpenPasswordReIssueModal}
+      onOpenChange={storeModal.setIsOpenPasswordReIssueModal}
     >
       <DrawerContent>
         <CsForm action={handleAction}>
@@ -79,8 +81,8 @@ const CsDrawerPasswordReIssue = (props: Props) => {
                     text="Already have an account?"
                     href="#"
                     onClick={() => {
-                      store.setIsChangePwModalOpen(false);
-                      store.setIsLoginModalOpen(true);
+                      storeModal.setIsOpenPasswordReIssueModal(false);
+                      storeModal.setIsOpenLoginModal(true);
                     }}
                   />
                 </CsStack>

@@ -4,15 +4,20 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 type Props = {
   name: string;
   label?: string;
+  isRequired?: boolean;
 };
 const CsRadioGroup = (props: Props) => {
-  const { name, label } = props;
+  const { name, label, isRequired } = props;
 
   return (
     <>
       <div className="grid gap-2">
         {label && <Label htmlFor={name}>{label}</Label>}
-        <RadioGroup defaultValue="comfortable">
+        <RadioGroup
+          name={name}
+          defaultValue="comfortable"
+          required={isRequired}
+        >
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="default" id="r1" />
             <Label htmlFor="r1">public</Label>
