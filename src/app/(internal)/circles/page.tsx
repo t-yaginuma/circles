@@ -13,10 +13,10 @@ import { CsStack } from "@/components/layouts/CsStack";
 import { Button } from "@/components/ui/button";
 import { Suspense } from "react";
 
-export default function Explore() {
+export default function Circles() {
   return (
     <CsMain>
-      <CsHeading heading="Explore" />
+      <CsHeading heading="Circles" />
       <div>
         <CsRow gap="lg">
           <Suspense fallback={<div>Loading...</div>}>
@@ -70,8 +70,6 @@ export default function Explore() {
           </Suspense>
         </CsRow>
       </div>
-
-      <CsDrawerCircle />
     </CsMain>
   );
 }

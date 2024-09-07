@@ -14,7 +14,7 @@ export default function Home() {
 
       <ul>
         <li>
-          <CsTextLink href="/explore" text="Find your Circle" />
+          <CsTextLink href="/circles" text="Find your Circle" />
         </li>
       </ul>
       <CsHeading
