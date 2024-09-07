@@ -10,42 +10,30 @@ datasource db {
   schemas   = ["public"]
 }
 
-// model Post {
-//   id        Int      @id @default(autoincrement())
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime
-//   title     String
-//   content   String?
-//   published Boolean  @default(false)
-//   viewCount Int      @default(0)
-//   authorId  Int?
-//   User      User?    @relation(fields: [authorId], references: [id])
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  image String?
+  city String?
+  country String?
 
-//   @@schema("public")
-// }
+  @@schema("public")
+}
 
-// model User {
-//   id    Int     @id @default(autoincrement())
-//   email String  @unique
-//   name  String?
-//   image String?
+model Circle {
+  id    Int     @id @default(autoincrement())
+  name  String?
+  image String?
+  description String?
+  visibility Boolean
 
-//   @@schema("public")
-// }
+  @@schema("public")
+}
 
-// model Tag {
-//   id    Int     @id @default(autoincrement())
-//   label   String  @unique
-  
-//   @@schema("public")
-// }
+model Tag {
+  id    Int     @id @default(autoincrement())
+  name  String?
 
-// model Circle {
-//   id    Int     @id @default(autoincrement())
-//   description String  @unique
-//   name  String  @unique
-//   tags Tag[]
-//   type Int
-  
-//   @@schema("public")
-// }
+  @@schema("public")
+}
