@@ -1,1 +1,1 @@
-type CurrentPage = "dashboard" | "explore";
+type CurrentPage = "dashboard" | "playlists" | "circles";
