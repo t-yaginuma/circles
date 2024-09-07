@@ -1,18 +1,8 @@
 import { type NextRequest } from "next/server";
-import { NextResponse } from "next/server";
-import { getUser } from "@/actions/auth";
+import { updateSession } from "@/libs/supabase/middleware";
 
 export async function middleware(request: NextRequest) {
-  // update user's auth session
-  // const test = await getUser();
-  // console.log("==========");
-  // console.log(test);
-  // const path = new URL(request.url).pathname;
-  // console.log(path);
-  // console.log("hit");
-  // console.log(test);
-  // return await updateSession(request);
-  // return NextResponse.redirect(new URL("/home", request.url));
+  return await updateSession(request);
 }
 
 export const config = {

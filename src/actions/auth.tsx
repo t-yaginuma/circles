@@ -1,56 +1,62 @@
 "use server";
 
-import { supabase } from "@/lib/supabase";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
-export async function signUp(formData: FormData) {
-  console.log("------------");
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
-  console.log(email);
-  console.log(password);
-  const { data, error } = await supabase.auth.signUp({
-    email: email,
-    password: password,
-  });
+import { createClient } from "@/libs/supabase/server";
 
-  console.log(data);
-  console.log(error?.code);
+export async function login(formData: FormData) {
+  const supabase = createClient();
+
+  // type-casting here for convenience
+  // in practice, you should validate your inputs
+  const data = {
+    email: formData.get("email") as string,
+    password: formData.get("password") as string,
+  };
+
+  const { error } = await supabase.auth.signInWithPassword(data);
+
   if (error) {
-    return error?.code;
+    redirect("/error");
   } else {
-    return "success";
+    return true;
   }
+
+  // revalidatePath("/", "layout");
+  // redirect("/");
 }
 
-export async function signIn(formData: FormData) {
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
+export async function signUp(formData: FormData) {
+  const supabase = createClient();
 
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: email,
-    password: password,
-  });
+  // type-casting here for convenience
+  // in practice, you should validate your inputs
+  const data = {
+    email: formData.get("email") as string,
+    password: formData.get("password") as string,
+  };
+
+  const { error } = await supabase.auth.signUp(data);
 
   if (error) {
-    return {
-      status: error.status,
-      code: error.code,
-    };
-  } else {
-    return "success";
+    redirect("/error");
   }
+
+  revalidatePath("/", "layout");
+  redirect("/");
 }
 
 export async function signOut() {
-  console.log("HITTTT");
+  const supabase = createClient();
   const { error } = await supabase.auth.signOut();
 }
 
-export async function getUser() {
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  ("user------------");
-  console.log(user);
-  return user;
-}
+// export async function getUser() {
+//   const {
+//     data: { user },
+//   } = await supabase.auth.getUser();
+//   ("user------------");
+//   console.log(user);
+//   return user;
+// }
