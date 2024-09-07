@@ -6,6 +6,9 @@ const inter = Inter({ subsets: ["latin"] });
 import { CsHeader } from "@/components/circles/CsHeader";
 import { CsFooter } from "@/components/circles/CsFooter";
 import { Toaster } from "@/components/ui/toaster";
+import { CsDrawerLogin } from "@/components/circles/CsDrawerLogin";
+import { CsDrawerSignUp } from "@/components/circles/CsDrawerSignUp";
+import { CsDrawerPasswordReIssue } from "@/components/circles/CsDrawerPasswordReIssue";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -34,6 +37,10 @@ export default function RootLayout({
         {children}
         <CsFooter />
         <Toaster />
+
+        <CsDrawerLogin />
+        <CsDrawerSignUp />
+        <CsDrawerPasswordReIssue />
       </body>
     </html>
   );
