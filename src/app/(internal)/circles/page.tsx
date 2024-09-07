@@ -5,44 +5,52 @@ import { CsRow } from "@/components/layouts/CsRow";
 import { Suspense } from "react";
 import { getCircles } from "@/actions/circles";
 import { CsButtonEstablishCircle } from "@/components/circles/CsButtonEstablishCircle";
+import { CsRootLayoutInternal } from "@/components/layouts/CsRootLayoutInternal";
+import useGetUser from "@/hooks/use-get-user";
 
 export default async function Circles() {
   const circles = await getCircles();
+  const { isAuthenticated } = await useGetUser();
 
   return (
-    <CsMain>
-      <CsHeading heading="Circles" />
-      <div>
-        {circles && circles.length ? (
-          <CsRow gap="lg">
-            {circles.map((circle) => {
-              return (
-                <>
-                  {circle.name && (
-                    <>
-                      <Suspense
-                        key={circle.id}
-                        fallback={<div>Loading...</div>}
-                      >
-                        <CsCircleCard
-                          name={circle.name}
-                          href={`/${circle.name}`}
-                          image={circle.image}
-                          description={circle.description}
-                        />
-                      </Suspense>
-                    </>
-                  )}
-                </>
-              );
-            })}
-          </CsRow>
-        ) : (
-          <p>no circles</p>
-        )}
-      </div>
+    <CsRootLayoutInternal
+      isAuthenticated={isAuthenticated}
+      currentPage="circles"
+    >
+      <CsMain>
+        <CsHeading heading="Circles" />
+        <div>
+          {circles && circles.length ? (
+            <CsRow gap="lg">
+              {circles.map((circle) => {
+                return (
+                  <>
+                    {circle.name && (
+                      <>
+                        <Suspense
+                          key={circle.id}
+                          fallback={<div>Loading...</div>}
+                        >
+                          <CsCircleCard
+                            name={circle.name}
+                            href={`/${circle.name}`}
+                            image={circle.image}
+                            description={circle.description}
+                          />
+                        </Suspense>
+                      </>
+                    )}
+                  </>
+                );
+              })}
+            </CsRow>
+          ) : (
+            <p>no circles</p>
+          )}
+        </div>
 
-      <CsButtonEstablishCircle />
-    </CsMain>
+        <CsButtonEstablishCircle isAuthenticated={isAuthenticated} />
+      </CsMain>
+    </CsRootLayoutInternal>
   );
 }

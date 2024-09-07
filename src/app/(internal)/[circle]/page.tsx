@@ -1,42 +1,41 @@
 import { CsMusicPlayer } from "@/components/circles/CsMusicPlayer";
-import { CsFileUploader } from "@/components/circles/CsFileUploader";
-import { Button } from "@/components/ui/button";
-import { CsForm } from "@/components/circles/CsForm";
-import { CsInput } from "@/components/circles/CsInput";
 import { CsHeading } from "@/components/circles/CsHeading";
-import { CsRadioGroup } from "@/components/circles/CsRadioGroup";
-import { uploadFile } from "@/actions/files";
-import { CsStack } from "@/components/layouts/CsStack";
 import { CsMain } from "@/components/layouts/CsMain";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { CsDrawerCircle } from "@/components/circles/CsDrawerCircle";
-import { CsButton } from "@/components/circles/CsButton";
 import { CsDrawerUploadMusic } from "@/components/circles/CsDrawerUploadMusic";
+import { CsRootLayoutInternal } from "@/components/layouts/CsRootLayoutInternal";
+import useGetUser from "@/hooks/use-get-user";
 
-export default function Circle() {
+export default async function Circle() {
+  const { isAuthenticated } = await useGetUser();
   return (
-    <CsMain>
-      <CsHeading heading="Trane." />
-      <ResizablePanelGroup direction="horizontal">
-        <ResizablePanel>
-          <div>
+    <CsRootLayoutInternal
+      isAuthenticated={isAuthenticated}
+      currentPage="circles"
+    >
+      <CsMain>
+        <CsHeading heading="Trane." />
+        <ResizablePanelGroup direction="horizontal">
+          <ResizablePanel>
             <div>
-              <CsMusicPlayer></CsMusicPlayer>
-              <CsMusicPlayer></CsMusicPlayer>
-              <CsMusicPlayer></CsMusicPlayer>
+              <div>
+                <CsMusicPlayer></CsMusicPlayer>
+                <CsMusicPlayer></CsMusicPlayer>
+                <CsMusicPlayer></CsMusicPlayer>
+              </div>
+              <CsDrawerUploadMusic />
             </div>
-            <CsDrawerUploadMusic />
-          </div>
-        </ResizablePanel>
-        <ResizableHandle />
-        <ResizablePanel>
-          <div>chat</div>
-        </ResizablePanel>
-      </ResizablePanelGroup>
-    </CsMain>
+          </ResizablePanel>
+          <ResizableHandle />
+          <ResizablePanel>
+            <div>chat</div>
+          </ResizablePanel>
+        </ResizablePanelGroup>
+      </CsMain>
+    </CsRootLayoutInternal>
   );
 }

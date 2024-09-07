@@ -12,66 +12,75 @@ import { CsRow } from "@/components/layouts/CsRow";
 import { CsStack } from "@/components/layouts/CsStack";
 import { Button } from "@/components/ui/button";
 import { Suspense } from "react";
+import { CsRootLayoutInternal } from "@/components/layouts/CsRootLayoutInternal";
+import useGetUser from "@/hooks/use-get-user";
 
-export default function Playlists() {
+export default async function Playlists() {
+  const { isAuthenticated } = await useGetUser();
+
   return (
-    <CsMain>
-      <CsHeading heading="Playlists" />
-      <div>
-        <CsRow gap="lg">
-          <Suspense fallback={<div>Loading...</div>}>
-            <CsCircleCard
-              name="Open1"
-              href="/open1"
-              image="https://placehold.jp/150x150.png"
-              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
-            />
-          </Suspense>
-          <Suspense fallback={<div>Loading...</div>}>
-            <CsCircleCard
-              name="Trane"
-              href="/trane"
-              image="https://placehold.jp/150x150.png"
-              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
-            />
-          </Suspense>
-          <Suspense fallback={<div>Loading...</div>}>
-            <CsCircleCard
-              name="vancouver"
-              href="/vancouver"
-              image="https://placehold.jp/150x150.png"
-              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
-            />
-          </Suspense>
-          <Suspense fallback={<div>Loading...</div>}>
-            <CsCircleCard
-              name="vancouver"
-              href="/vancouver"
-              image="https://placehold.jp/150x150.png"
-              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
-            />
-          </Suspense>
-          <Suspense fallback={<div>Loading...</div>}>
-            <CsCircleCard
-              name="vancouver"
-              href="/vancouver"
-              image="https://placehold.jp/150x150.png"
-              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
-            />
-          </Suspense>
-          <Suspense fallback={<div>Loading...</div>}>
-            {" "}
-            <CsCircleCard
-              name="vancouver"
-              href="/vancouver"
-              image="https://placehold.jp/150x150.png"
-              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
-            />
-          </Suspense>
-        </CsRow>
-      </div>
+    <CsRootLayoutInternal
+      isAuthenticated={isAuthenticated}
+      currentPage="playlists"
+    >
+      <CsMain>
+        <CsHeading heading="Playlists" />
+        <div>
+          <CsRow gap="lg">
+            <Suspense fallback={<div>Loading...</div>}>
+              <CsCircleCard
+                name="Open1"
+                href="/open1"
+                image="https://placehold.jp/150x150.png"
+                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
+              />
+            </Suspense>
+            <Suspense fallback={<div>Loading...</div>}>
+              <CsCircleCard
+                name="Trane"
+                href="/trane"
+                image="https://placehold.jp/150x150.png"
+                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
+              />
+            </Suspense>
+            <Suspense fallback={<div>Loading...</div>}>
+              <CsCircleCard
+                name="vancouver"
+                href="/vancouver"
+                image="https://placehold.jp/150x150.png"
+                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
+              />
+            </Suspense>
+            <Suspense fallback={<div>Loading...</div>}>
+              <CsCircleCard
+                name="vancouver"
+                href="/vancouver"
+                image="https://placehold.jp/150x150.png"
+                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
+              />
+            </Suspense>
+            <Suspense fallback={<div>Loading...</div>}>
+              <CsCircleCard
+                name="vancouver"
+                href="/vancouver"
+                image="https://placehold.jp/150x150.png"
+                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
+              />
+            </Suspense>
+            <Suspense fallback={<div>Loading...</div>}>
+              {" "}
+              <CsCircleCard
+                name="vancouver"
+                href="/vancouver"
+                image="https://placehold.jp/150x150.png"
+                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
+              />
+            </Suspense>
+          </CsRow>
+        </div>
 
-      <CsDrawerCircle />
-    </CsMain>
+        <CsDrawerCircle />
+      </CsMain>
+    </CsRootLayoutInternal>
   );
 }
