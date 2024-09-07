@@ -12,7 +12,7 @@ import Link from "next/link";
 import { CircleUser } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { signOut, getUser } from "@/actions/auth";
+import { signOut } from "@/actions/auth";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { useAuthStore } from "@/store/auth";
@@ -28,18 +28,17 @@ const CsProfile = (props: Props) => {
   const logoutHandle = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    const user = getUser();
-    user.then((u) => {
-      console.log(u);
-    });
+    // const user = getUser();
+    // user.then((u) => {
+    //   console.log(u);
+    // });
 
     await signOut();
 
-    const user2 = getUser();
-    user2.then((u) => {
-      console.log(u);
-    });
-    store.setIsAuthenticated(false);
+    // const user2 = getUser();
+    // user2.then((u) => {
+    //   console.log(u);
+    // });
 
     toast({
       title: "You logged-out successfully!",

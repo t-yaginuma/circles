@@ -2,14 +2,18 @@
 
 import { CsButton } from "@/components/circles/CsButton";
 import { useModalStore } from "@/store/modal-handle";
-import { useAuthStore } from "@/store/auth";
 
-const CsButtonEstablishCircle = () => {
+type Props = {
+  isAuthenticated?: boolean;
+};
+
+const CsButtonEstablishCircle = (props: Props) => {
+  const { isAuthenticated } = props;
   const storeModal = useModalStore();
-  const storeAuth = useAuthStore();
+
   return (
     <>
-      {storeAuth.isAuthenticated && (
+      {isAuthenticated && (
         <CsButton
           className="fixed bottom-8 right-8"
           text="Establish Your Circle"

@@ -12,7 +12,7 @@ import {
 import { CsStack } from "../layouts/CsStack";
 import { CsForm } from "./CsForm";
 import { CsInput } from "./CsInput";
-import { signIn, getUser } from "@/actions/auth";
+import { login, getUser } from "@/actions/auth";
 import { CsButton } from "./CsButton";
 import { CsTextLink } from "./CsTextLink";
 import { useEffect, useState } from "react";
@@ -31,26 +31,34 @@ const CsDrawerLogin = (props: Props) => {
   const { toast } = useToast();
 
   const handleAction = async (formData: FormData) => {
-    const test = await signIn(formData);
-    console.log("start");
-    if (test === "success") {
-      const user = getUser();
-      user.then((test) => {
-        console.log("hit");
-        console.log(storeAuth);
-        storeAuth.setIsAuthenticated(true);
-        storeModal.setIsOpenLoginModal(false);
-        console.log(storeAuth.isAuthenticated);
-        toast({
-          title: "Logged-in Successfully!",
-          // description: "Friday, February 10, 2023 at 5:57 PM",
-        });
+    const isLoggedIn = await login(formData);
+
+    if (isLoggedIn) {
+      storeModal.setIsOpenLoginModal(false);
+      toast({
+        title: "Logged-in Successfully!",
+        // description: "Friday, February 10, 2023 at 5:57 PM",
       });
-    } else if (test.code) {
-      console.log("error");
-      console.log(test);
-      setMessage(test.code);
     }
+    // console.log("start");
+    // if (test === "success") {
+    //   const user = getUser();
+    //   user.then((test) => {
+    //     console.log("hit");
+    //     console.log(storeAuth);
+    //     storeAuth.setIsAuthenticated(true);
+    //     storeModal.setIsOpenLoginModal(false);
+    //     console.log(storeAuth.isAuthenticated);
+    //     toast({
+    //       title: "Logged-in Successfully!",
+    //       // description: "Friday, February 10, 2023 at 5:57 PM",
+    //     });
+    //   });
+    // } else if (test.code) {
+    //   console.log("error");
+    //   console.log(test);
+    //   setMessage(test.code);
+    // }
   };
 
   return (

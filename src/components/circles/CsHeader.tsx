@@ -3,7 +3,6 @@
 import Link from "next/link";
 import {
   Inbox,
-  CircleUser,
   Home,
   LineChart,
   Menu,
@@ -23,17 +22,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CsProfile } from "@/components/circles/CsProfile";
 import { CsButton } from "@/components/circles/CsButton";
-import { CsDrawerLogin } from "@/components/circles/CsDrawerLogin";
-import { CsDrawerSignUp } from "@/components/circles/CsDrawerSignUp";
 import { useAuthStore } from "@/store/auth";
 import { useModalStore } from "@/store/modal-handle";
 
-const CsHeader = () => {
-  const storeAuth = useAuthStore();
+type Props = {
+  isAuthenticated?: boolean;
+};
+const CsHeader = (props: Props) => {
+  const { isAuthenticated } = props;
   const storeModal = useModalStore();
 
   return (
@@ -135,7 +134,7 @@ const CsHeader = () => {
         </div>
 
         {(() => {
-          if (storeAuth.isAuthenticated) {
+          if (isAuthenticated) {
             return (
               <>
                 <Link href="/messages">

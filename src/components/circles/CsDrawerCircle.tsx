@@ -32,6 +32,24 @@ const CsDrawerCircle = (props: Props) => {
     console.log(test);
   };
 
+  const options = [
+    {
+      id: "public",
+      value: "0",
+      label: "public",
+    },
+    {
+      id: "private",
+      value: "1",
+      label: "private",
+    },
+    {
+      id: "invited",
+      value: "2",
+      label: "invited",
+    },
+  ];
+
   return (
     <Drawer
       open={store.isOpenEstablishCircleModal}
@@ -77,7 +95,13 @@ const CsDrawerCircle = (props: Props) => {
                     type="text"
                     placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod t"
                   /> */}
-                  {/* <CsRadioGroup name="publicity" label="Publicity" isRequired /> */}
+                  <CsRadioGroup
+                    items={options}
+                    defaultValue={options[0].value}
+                    name="visibility"
+                    label="Visibility"
+                    isRequired
+                  />
                 </CsStack>
               </CsStack>
             </div>

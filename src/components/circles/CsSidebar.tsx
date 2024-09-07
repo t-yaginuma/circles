@@ -1,22 +1,19 @@
-"use client";
-
 import { Home, Search } from "lucide-react";
 import { CsSidebarItem } from "@/components/circles/CsSidebarItem";
-import { useAuthStore } from "@/store/auth";
 
 type Props = {
   currentPage?: CurrentPage;
+  isAuthenticated?: boolean;
 };
 
 const CsSidebar = (props: Props) => {
-  const { currentPage } = props;
-  const store = useAuthStore();
+  const { currentPage, isAuthenticated } = props;
 
   return (
-    <div className="sticky top-14 min-h-screen border-r bg-muted/40 md:block p-4 flex h-full max-h-screen flex-col gap-2">
-      <div className="flex-1">
-        <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-          {store.isAuthenticated && (
+    <div className="min-h-screen border-r bg-muted/40 md:block p-4 flex h-full max-h-screen flex-col gap-2">
+      <div className="sticky top-20 flex-1">
+        <nav className="grid items-start px-2 text-sm font-medium lg:px-0">
+          {isAuthenticated && (
             <CsSidebarItem
               href="/dashboard"
               text="Dashboard"

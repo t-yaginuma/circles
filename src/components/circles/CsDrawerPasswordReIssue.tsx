@@ -12,11 +12,9 @@ import {
 import { CsStack } from "../layouts/CsStack";
 import { CsForm } from "./CsForm";
 import { CsInput } from "./CsInput";
-import { signIn, getUser } from "@/actions/auth";
 import { CsButton } from "./CsButton";
 import { CsTextLink } from "./CsTextLink";
 import { useEffect, useState } from "react";
-import { CsDrawerSignUp } from "@/components/circles/CsDrawerSignUp";
 import { useToast } from "@/hooks/use-toast";
 import { useModalStore } from "@/store/modal-handle";
 import { useAuthStore } from "@/store/auth";
@@ -31,25 +29,25 @@ const CsDrawerPasswordReIssue = (props: Props) => {
   const { toast } = useToast();
 
   const handleAction = async (formData: FormData) => {
-    const test = await signIn(formData);
+    // const test = await signIn(formData);
     console.log("start");
 
-    if (test === "success") {
-      const user = getUser();
-      user.then((test) => {
-        console.log("-------------");
+    // if (test === "success") {
+    // const user = getUser();
+    // user.then((test) => {
+    //     console.log("-------------");
 
-        storeAuth.setIsAuthenticated(true);
-        storeModal.setIsOpenLoginModal(false);
+    //     storeAuth.setIsAuthenticated(true);
+    //     storeModal.setIsOpenLoginModal(false);
 
-        toast({
-          title: "Logged-in Successfully!",
-          // description: "Friday, February 10, 2023 at 5:57 PM",
-        });
-      });
-    } else if (test.code) {
-      setMessage(test.code);
-    }
+    //     toast({
+    //       title: "Logged-in Successfully!",
+    //       // description: "Friday, February 10, 2023 at 5:57 PM",
+    //     });
+    //   });
+    // } else if (test.code) {
+    //   setMessage(test.code);
+    // }
   };
 
   return (

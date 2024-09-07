@@ -8,7 +8,7 @@ const CsFooter = (props: Props) => {
 
   return (
     <>
-      <footer className="w-full">
+      <footer className="w-full bg-muted/40">
         <Separator />
         <div className="w-full p-6">
           <p className="">©Trane LLC 2025</p>
