@@ -24,28 +24,28 @@ datasource db {
 //   @@schema("public")
 // }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  image String?
+// model User {
+//   id    Int     @id @default(autoincrement())
+//   email String  @unique
+//   name  String?
+//   image String?
 
-  @@schema("public")
-}
+//   @@schema("public")
+// }
 
-model Tag {
-  id    Int     @id @default(autoincrement())
-  label   String  @unique
+// model Tag {
+//   id    Int     @id @default(autoincrement())
+//   label   String  @unique
   
-  @@schema("public")
-}
+//   @@schema("public")
+// }
 
-model Circle {
-  id    Int     @id @default(autoincrement())
-  description String  @unique
-  name  String  @unique
-  tags Tag[]
-  type Int
+// model Circle {
+//   id    Int     @id @default(autoincrement())
+//   description String  @unique
+//   name  String  @unique
+//   tags Tag[]
+//   type Int
   
-  @@schema("public")
-}
+//   @@schema("public")
+// }
