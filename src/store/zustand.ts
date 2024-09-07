@@ -2,14 +2,26 @@
 import { create } from "zustand";
 
 type State = {
-  bears: number;
+  isAuthenticated: boolean;
+  isLoginModalOpen: boolean;
+  isSignUpModalOpen: boolean;
+  isChangePwModalOpen: boolean;
 };
 
 type Action = {
-  increaseBear: (by: number) => void;
+  setIsAuthenticated: (by: boolean) => void;
+  setIsLoginModalOpen: (by: boolean) => void;
+  setIsSignUpModalOpen: (by: boolean) => void;
+  setIsChangePwModalOpen: (by: boolean) => void;
 };
 
 export const useStore = create<State & Action>()((set) => ({
-  bears: 0,
-  increaseBear: (by) => set((state) => ({ bears: state.bears + by })),
+  isAuthenticated: false,
+  isLoginModalOpen: false,
+  isSignUpModalOpen: false,
+  isChangePwModalOpen: false,
+  setIsAuthenticated: (by) => set((state) => ({ isAuthenticated: by })),
+  setIsLoginModalOpen: (by) => set((state) => ({ isLoginModalOpen: by })),
+  setIsSignUpModalOpen: (by) => set((state) => ({ isSignUpModalOpen: by })),
+  setIsChangePwModalOpen: (by) => set((state) => ({ isChangePwModalOpen: by })),
 }));
