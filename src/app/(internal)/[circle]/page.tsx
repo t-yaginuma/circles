@@ -27,7 +27,15 @@ import {
   Triangle,
   Turtle,
 } from "lucide-react";
-
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -48,6 +56,7 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CsProfile } from "@/components/circles/CsProfile";
 
 export default async function Circle() {
   const { isAuthenticated } = await useGetUser();
@@ -57,11 +66,12 @@ export default async function Circle() {
       currentPage="circles"
     >
       <CsMain>
-        <CsHeading heading="Trane." />
+        <CsProfile />
         <Tabs defaultValue="session" className="w-full h-full">
           <TabsList>
             <TabsTrigger value="session">Session</TabsTrigger>
             <TabsTrigger value="about">About</TabsTrigger>
+            <TabsTrigger value="store">Store</TabsTrigger>
           </TabsList>
           <TabsContent value="session" className="w-full h-full">
             <ResizablePanelGroup direction="horizontal">
@@ -134,7 +144,29 @@ export default async function Circle() {
             </ResizablePanelGroup>
           </TabsContent>
           <TabsContent value="about" className="w-full h-full">
-            Change your password here.
+            <p>Organizers</p>
+            <p>Users</p>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[100px]">date</TableHead>
+                  <TableHead>event</TableHead>
+                  <TableHead>venue</TableHead>
+                  <TableHead className="text-right">link</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">11Dec. 2024</TableCell>
+                  <TableCell>Special Event</TableCell>
+                  <TableCell>@AmazingVenue</TableCell>
+                  <TableCell className="text-right">detail</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TabsContent>
+          <TabsContent value="store" className="w-full h-full">
+            <p>Beautiful Marchandises</p>
           </TabsContent>
         </Tabs>
       </CsMain>

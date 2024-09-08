@@ -19,6 +19,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { CsTextLink } from "@/components/circles/CsTextLink";
+import { Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { CsProfile } from "@/components/circles/CsProfile";
+
 export default async function Profile() {
   const { isAuthenticated } = await useGetUser();
 
@@ -28,40 +33,16 @@ export default async function Profile() {
       currentPage="dashboard"
     >
       <CsMain>
-        <CsRow gap="md" className="w-full flex-nowrap">
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <CsStack gap="sm">
-            <CsHeading
-              heading="Gori"
-              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip "
-            />
-            <div>
-              Chicago, USA <US title="United States" className="w-4 h-4" />
-            </div>
-            <div>
-              links
-              <ul>
-                <li>
-                  <Link href="https://google.com">home page</Link>
-                  <Link href="https://google.com">bandcamp</Link>
-                  <Link href="https://google.com">linktrees</Link>
-                </li>
-              </ul>
-            </div>
-          </CsStack>
-        </CsRow>
-        <Tabs defaultValue="about" className="w-full">
+        <CsProfile />
+
+        <Tabs defaultValue="schedule" className="w-full mt-4">
           <TabsList>
-            <TabsTrigger value="about">About</TabsTrigger>
+            <TabsTrigger value="schedule">Schedule</TabsTrigger>
             <TabsTrigger value="music">Music</TabsTrigger>
             <TabsTrigger value="playlist">Playlist</TabsTrigger>
           </TabsList>
-          <TabsContent value="about">
+          <TabsContent value="schedule">
             <Table>
-              <TableCaption>Live Schedules</TableCaption>
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-[100px]">date</TableHead>

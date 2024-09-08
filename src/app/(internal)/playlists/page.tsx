@@ -21,7 +21,7 @@ export default async function Playlists() {
             <Suspense fallback={<div>Loading...</div>}>
               <CsCircleCard
                 name="Open1"
-                href="/open1"
+                href="/playlists/1"
                 image="https://placehold.jp/150x150.png"
                 description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
               />
@@ -29,7 +29,7 @@ export default async function Playlists() {
             <Suspense fallback={<div>Loading...</div>}>
               <CsCircleCard
                 name="Trane"
-                href="/trane"
+                href="/playlists/2"
                 image="https://placehold.jp/150x150.png"
                 description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
               />
@@ -37,7 +37,7 @@ export default async function Playlists() {
             <Suspense fallback={<div>Loading...</div>}>
               <CsCircleCard
                 name="vancouver"
-                href="/vancouver"
+                href="/playlists/3"
                 image="https://placehold.jp/150x150.png"
                 description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
               />
@@ -45,24 +45,7 @@ export default async function Playlists() {
             <Suspense fallback={<div>Loading...</div>}>
               <CsCircleCard
                 name="vancouver"
-                href="/vancouver"
-                image="https://placehold.jp/150x150.png"
-                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
-              />
-            </Suspense>
-            <Suspense fallback={<div>Loading...</div>}>
-              <CsCircleCard
-                name="vancouver"
-                href="/vancouver"
-                image="https://placehold.jp/150x150.png"
-                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
-              />
-            </Suspense>
-            <Suspense fallback={<div>Loading...</div>}>
-              {" "}
-              <CsCircleCard
-                name="vancouver"
-                href="/vancouver"
+                href="/playlists/4"
                 image="https://placehold.jp/150x150.png"
                 description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess"
               />
