@@ -1,16 +1,7 @@
-import { uploadFile } from "@/actions/files";
-import { CsButton } from "@/components/circles/CsButton";
 import { CsCircleCard } from "@/components/circles/CsCircleCard";
-import { CsDrawerCircle } from "@/components/circles/CsDrawerCircle";
-import { CsFileUploader } from "@/components/circles/CsFileUploader";
-import { CsForm } from "@/components/circles/CsForm";
 import { CsHeading } from "@/components/circles/CsHeading";
-import { CsInput } from "@/components/circles/CsInput";
-import { CsRadioGroup } from "@/components/circles/CsRadioGroup";
 import { CsMain } from "@/components/layouts/CsMain";
 import { CsRow } from "@/components/layouts/CsRow";
-import { CsStack } from "@/components/layouts/CsStack";
-import { Button } from "@/components/ui/button";
 import { Suspense } from "react";
 import { CsRootLayoutInternal } from "@/components/layouts/CsRootLayoutInternal";
 import useGetUser from "@/hooks/use-get-user";
@@ -78,8 +69,6 @@ export default async function Playlists() {
             </Suspense>
           </CsRow>
         </div>
-
-        <CsDrawerCircle />
       </CsMain>
     </CsRootLayoutInternal>
   );

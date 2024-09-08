@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { Inter as FontSans, Inter } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/libs/utils";
+import { cn } from "@/libs/shadcn/utils";
 const inter = Inter({ subsets: ["latin"] });
 
 import { Toaster } from "@/components/ui/toaster";
 import { CsDrawerLogin } from "@/components/circles/CsDrawerLogin";
 import { CsDrawerSignUp } from "@/components/circles/CsDrawerSignUp";
 import { CsDrawerPasswordReIssue } from "@/components/circles/CsDrawerPasswordReIssue";
-import { CsDrawerCircle } from "@/components/circles/CsDrawerCircle";
+import { CsDrawerEstablishCircle } from "@/components/circles/CsDrawerEstablishCircle";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -39,7 +39,7 @@ export default function RootLayout({
         <CsDrawerLogin />
         <CsDrawerSignUp />
         <CsDrawerPasswordReIssue />
-        <CsDrawerCircle />
+        <CsDrawerEstablishCircle />
       </body>
     </html>
   );
