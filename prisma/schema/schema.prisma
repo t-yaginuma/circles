@@ -26,7 +26,7 @@ model Circle {
   name  String?
   image String?
   description String?
-  visibility String?
+  visibility String
 
   @@schema("public")
 }
