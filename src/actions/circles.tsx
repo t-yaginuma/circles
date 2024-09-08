@@ -1,6 +1,6 @@
 "use server";
 import { PrismaClient } from "@prisma/client";
-// import { supabase } from "@/lib/supabase";
+import { createClient } from "@/libs/supabase/server";
 
 const prisma = new PrismaClient();
 
@@ -14,6 +14,8 @@ export async function getCircles() {
 }
 
 export async function postCircles(formData: FormData) {
+  const supabase = createClient();
+
   const image = formData.get("image") as string;
   const name = formData.get("name") as string;
   const description = formData.get("description") as string;
@@ -23,29 +25,30 @@ export async function postCircles(formData: FormData) {
   console.log(description);
   console.log(visibility);
   try {
-    // const { data, error } = await supabase.storage
-    //   .from("circles")
-    //   .upload("avatar1.png", image, {
-    //     cacheControl: "3600",
-    //     upsert: false,
-    //   });
+    const supabase = createClient();
+    const { data, error } = await supabase.storage
+      .from("circles")
+      .upload("hoge.jpg", image, {
+        cacheControl: "3600",
+        upsert: false,
+      });
 
-    // console.log("-------");
-    // console.log(data);
-    // console.log(error);
+    console.log("-------");
+    console.log(data);
+    console.log(error);
 
-    // const circle = await prisma.circle.create({
-    //   data: {
-    //     name: name,
-    //     image: image,
-    //     description: description,
-    //     visibility: visibility,
-    //   },
-    // });
+    const dataCircle = await prisma.circle.create({
+      data: {
+        name: name,
+        image: "/test.jpg",
+        description: description,
+        visibility: visibility,
+      },
+    });
 
-    return data;
-  } catch {
-    return console.error("error");
+    return dataCircle;
+  } catch (error) {
+    return console.error(error);
   }
 }
 
