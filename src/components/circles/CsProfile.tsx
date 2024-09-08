@@ -1,77 +1,72 @@
-"use client";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { CsHeading } from "@/components/circles/CsHeading";
+import { CsDrawerUserEdit } from "@/components/circles/CsDrawerUserEdit";
+import { CsMain } from "@/components/layouts/CsMain";
+import { CsRootLayoutInternal } from "@/components/layouts/CsRootLayoutInternal";
+import useGetUser from "@/hooks/use-get-user";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Label } from "@radix-ui/react-label";
+import { CsStack } from "@/components/layouts/CsStack";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { CsRow } from "@/components/layouts/CsRow";
+import { US } from "country-flag-icons/react/3x2";
 import Link from "next/link";
-import { CircleUser } from "lucide-react";
-
+import { CsTextLink } from "@/components/circles/CsTextLink";
+import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { signOut } from "@/actions/auth";
-import { useRouter } from "next/navigation";
-import { useToast } from "@/hooks/use-toast";
-import { useAuthStore } from "@/store/auth";
 
 type Props = {};
 
 const CsProfile = (props: Props) => {
   const {} = props;
-  const router = useRouter();
-  const { toast } = useToast();
-  const store = useAuthStore();
-
-  const logoutHandle = async (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-
-    // const user = getUser();
-    // user.then((u) => {
-    //   console.log(u);
-    // });
-
-    await signOut();
-
-    // const user2 = getUser();
-    // user2.then((u) => {
-    //   console.log(u);
-    // });
-
-    toast({
-      title: "You logged-out successfully!",
-      // description: "Friday, February 10, 2023 at 5:57 PM",
-    });
-    const href = "/logout";
-    router.push(href);
-  };
 
   return (
-    <>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="secondary" size="icon" className="rounded-full">
-            <CircleUser className="h-5 w-5" />
-            <span className="sr-only">Toggle user menu</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <Link href="/profile">Your Profile</Link>
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <Link href="#" onClick={logoutHandle}>
-              Logout
-            </Link>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </>
+    <CsRow gap="md" className="w-full flex-nowrap">
+      <Avatar className="w-36 h-36">
+        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+      <CsStack gap="sm">
+        <div className="flex gap-4 items-center">
+          <h1 className="text-2xl font-semibold leading-none tracking-tight">
+            GorGor
+          </h1>
+          <Link href="/messages">
+            <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
+              <Mail className="h-4 w-4" />
+              <span className="sr-only">Toggle notifications</span>
+            </Button>
+          </Link>
+        </div>
+
+        <div className="flex items-center">
+          <span className="text-sm text-muted-foreground italic">
+            Chicago USA
+          </span>
+
+          <US title="United States" className="ml-2 inline-block w-4 h-4" />
+        </div>
+        <p className="text-sm text-muted-foreground">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip
+        </p>
+
+        <ul className="flex gap-2">
+          <li>
+            <CsTextLink href="https://google.com" text="home page" />{" "}
+            <span className="text-sm text-muted-foreground">/</span>
+          </li>
+          <li>
+            <CsTextLink href="https://google.com" text="Band Camp" />{" "}
+            <span className="text-sm text-muted-foreground">/</span>
+          </li>
+          <li>
+            <CsTextLink href="https://google.com" text="instagram" />
+          </li>
+        </ul>
+      </CsStack>
+    </CsRow>
   );
 };
 

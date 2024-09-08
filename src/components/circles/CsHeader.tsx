@@ -23,7 +23,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { CsProfile } from "@/components/circles/CsProfile";
+import { CsAccountMenu } from "@/components/circles/CsAccountMenu";
 import { CsButton } from "@/components/circles/CsButton";
 import { useAuthStore } from "@/store/auth";
 import { useModalStore } from "@/store/modal-handle";
@@ -37,7 +37,7 @@ const CsHeader = (props: Props) => {
 
   return (
     <>
-      <header className="sticky top-0 w-screen backdrop-blur flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+      <header className="sticky top-0 w-screen backdrop-blur flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6 z-10">
         <Sheet>
           <SheetTrigger asChild>
             <Button
@@ -147,7 +147,7 @@ const CsHeader = (props: Props) => {
                     <span className="sr-only">Toggle notifications</span>
                   </Button>
                 </Link>
-                <CsProfile />
+                <CsAccountMenu />
               </>
             );
           } else {
