@@ -34,11 +34,6 @@ const CsDrawerSignUp = (props: Props) => {
   const handleAction = async (formData: FormData) => {
     setIsLoading(true);
     const test = await signUp(formData);
-
-    if (test) {
-      setMessage(test);
-    }
-
     setIsLoading(false);
   };
 

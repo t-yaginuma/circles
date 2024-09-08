@@ -1,6 +1,6 @@
 type Props = {
   children: React.ReactNode;
-  action: (formData: FormData) => Promise<void>;
+  action?: (formData: FormData) => Promise<void>;
 };
 
 const CsForm = (props: Props) => {

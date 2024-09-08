@@ -13,21 +13,22 @@ import { CsForm } from "./CsForm";
 import { CsInput } from "./CsInput";
 import { CsFileUploader } from "./CsFileUploader";
 import { Button } from "../ui/button";
-import { uploadFile } from "@/actions/files";
 import { CsButton } from "./CsButton";
 
 type Props = {};
 
 const CsDrawerUserEdit = (props: Props) => {
   const {} = props;
-
+  const actionHandle = (formData: FormData) => {
+    console.log(formData);
+  };
   return (
     <Drawer>
       <DrawerTrigger className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 fixed bottom-8 right-8">
         Edit Profile
       </DrawerTrigger>
       <DrawerContent>
-        <CsForm action={uploadFile}>
+        <CsForm>
           <div className="m-auto w-[640px]">
             <CsStack gap="md">
               <DrawerHeader>

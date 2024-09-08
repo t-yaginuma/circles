@@ -12,7 +12,7 @@ import {
 import { CsStack } from "../layouts/CsStack";
 import { CsForm } from "./CsForm";
 import { CsInput } from "./CsInput";
-import { login, getUser } from "@/actions/auth";
+import { login } from "@/actions/auth";
 import { CsButton } from "./CsButton";
 import { CsTextLink } from "./CsTextLink";
 import { useEffect, useState } from "react";

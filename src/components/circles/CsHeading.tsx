@@ -1,4 +1,4 @@
-import { cn } from "@/libs/utils";
+import { cn } from "@/libs/shadcn/utils";
 
 type Props = {
   heading: string;

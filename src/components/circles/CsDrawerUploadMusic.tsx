@@ -13,7 +13,6 @@ import { CsForm } from "./CsForm";
 import { CsInput } from "./CsInput";
 import { CsFileUploader } from "./CsFileUploader";
 import { Button } from "../ui/button";
-import { uploadFile } from "@/actions/files";
 import { CsButton } from "./CsButton";
 
 type Props = {};
@@ -25,45 +24,44 @@ const CsDrawerUploadMusic = (props: Props) => {
         Put your music
       </DrawerTrigger>
       <DrawerContent>
-        <CsForm action={uploadFile}>
+        <CsForm>
           <div className="m-auto w-[640px]">
             <CsStack gap="lg">
               <DrawerHeader>
                 <DrawerTitle>Song put</DrawerTitle>
               </DrawerHeader>
-              <CsForm action={uploadFile}>
-                <CsStack gap="md">
-                  <CsFileUploader
-                    name="artwork"
-                    label="Artwork"
-                    type="image"
-                  ></CsFileUploader>
-                  <CsInput
-                    name="songTitle"
-                    label="Song Title"
-                    type="text"
-                    placeholder="Natural Mystic"
-                  />
-                  <CsInput
-                    name="songDescription"
-                    label="Description"
-                    type="text"
-                    placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitati"
-                  />
-                  <CsFileUploader
-                    name="music"
-                    label="SongFile"
-                    type="image"
-                  ></CsFileUploader>
-                  <Button className="mt-4">Add music</Button>
-                </CsStack>
-                <DrawerFooter>
-                  <CsButton type="submit" text="Update Profile" />
-                  <DrawerClose asChild>
-                    <CsButton type="button" text="Cancel" variant="outline" />
-                  </DrawerClose>
-                </DrawerFooter>
-              </CsForm>
+
+              <CsStack gap="md">
+                <CsFileUploader
+                  name="artwork"
+                  label="Artwork"
+                  type="image"
+                ></CsFileUploader>
+                <CsInput
+                  name="songTitle"
+                  label="Song Title"
+                  type="text"
+                  placeholder="Natural Mystic"
+                />
+                <CsInput
+                  name="songDescription"
+                  label="Description"
+                  type="text"
+                  placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitati"
+                />
+                <CsFileUploader
+                  name="music"
+                  label="SongFile"
+                  type="image"
+                ></CsFileUploader>
+                <Button className="mt-4">Add music</Button>
+              </CsStack>
+              <DrawerFooter>
+                <CsButton type="submit" text="Update Profile" />
+                <DrawerClose asChild>
+                  <CsButton type="button" text="Cancel" variant="outline" />
+                </DrawerClose>
+              </DrawerFooter>
             </CsStack>
           </div>
         </CsForm>

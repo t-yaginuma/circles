@@ -13,23 +13,26 @@ import {
 import { Button } from "../ui/button";
 import { CsStack } from "../layouts/CsStack";
 import { CsForm } from "./CsForm";
-import { uploadFile } from "@/actions/files";
 import { CsFileUploader } from "./CsFileUploader";
 import { CsInput } from "./CsInput";
 import { CsRadioGroup } from "./CsRadioGroup";
 import { CsButton } from "./CsButton";
-import { postCircles } from "@/actions/circles";
+import { getCircles, postCircles } from "@/actions/circles";
 import { useModalStore } from "@/store/modal-handle";
 
 type Props = {};
 
-const CsDrawerCircle = (props: Props) => {
+const CsDrawerEstablishCircle = (props: Props) => {
   const {} = props;
-  const store = useModalStore();
+  const storeModal = useModalStore();
 
   const handleAction = async (formData: FormData) => {
     const test = await postCircles(formData);
-    console.log(test);
+
+    if (test) {
+      const circle = await getCircles();
+      storeModal.setIsOpenEstablishCircleModal(false);
+    }
   };
 
   const options = [
@@ -52,8 +55,8 @@ const CsDrawerCircle = (props: Props) => {
 
   return (
     <Drawer
-      open={store.isOpenEstablishCircleModal}
-      onOpenChange={store.setIsOpenEstablishCircleModal}
+      open={storeModal.isOpenEstablishCircleModal}
+      onOpenChange={storeModal.setIsOpenEstablishCircleModal}
     >
       <DrawerContent>
         <CsForm action={handleAction}>
@@ -118,4 +121,4 @@ const CsDrawerCircle = (props: Props) => {
   );
 };
 
-export { CsDrawerCircle };
+export { CsDrawerEstablishCircle };
