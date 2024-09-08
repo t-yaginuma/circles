@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+import json from "./package.json" assert { type: "json" };
+
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -13,6 +15,9 @@ const nextConfig = {
         port: "",
       },
     ],
+  },
+  publicRuntimeConfig: {
+    json,
   },
 };
 
