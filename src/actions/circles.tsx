@@ -1,6 +1,8 @@
 "use server";
 import { PrismaClient } from "@prisma/client";
 import { createClient } from "@/libs/supabase/server";
+import { v4 as uuidv4 } from "uuid";
+import path from "path";
 
 const prisma = new PrismaClient();
 
@@ -13,34 +15,53 @@ export async function getCircles() {
   }
 }
 
-export async function postCircles(formData: FormData) {
-  const supabase = createClient();
+type File = {
+  size: number;
+  type: string;
+  name: string;
+  lastModified: number;
+};
 
-  const image = formData.get("image") as string;
-  const name = formData.get("name") as string;
-  const description = formData.get("description") as string;
-  const visibility = formData.get("visibility") as string;
-  console.log(image);
-  console.log(name);
-  console.log(description);
-  console.log(visibility);
+export async function postCircles(formData: FormData) {
   try {
+    const image = formData.get("image") as File;
+    const imageName = path.parse(image.name);
+
+    const name = formData.get("name") as string;
+    const description = formData.get("description") as string;
+    const visibility = formData.get("visibility") as string;
+
     const supabase = createClient();
+    const bucketName = "images";
+    const dir = "circles";
+    const fileName = `${uuidv4()}`;
+    const extension = imageName.ext;
+
+    // console.log("-----------");
+    // console.log(extension);
+    // console.log(description);
+    // console.log(visibility);
     const { data, error } = await supabase.storage
-      .from("circles")
-      .upload("hoge.jpg", image, {
+      .from(bucketName)
+      .upload(`${dir}/${fileName}${extension}`, image, {
         cacheControl: "3600",
         upsert: false,
       });
 
-    console.log("-------");
-    console.log(data);
-    console.log(error);
+    console.log("---sdsds----");
+    console.log(data?.fullPath);
+    // console.log(error);
+
+    const {
+      data: { publicUrl },
+    } = await supabase.storage
+      .from(bucketName)
+      .getPublicUrl(`${dir}/${fileName}${extension}`);
 
     const dataCircle = await prisma.circle.create({
       data: {
         name: name,
-        image: "/test.jpg",
+        image: publicUrl ? publicUrl : undefined,
         description: description,
         visibility: visibility,
       },
