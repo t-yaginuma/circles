@@ -20,30 +20,34 @@ export default async function Circles() {
       <CsMain>
         <CsHeading heading="Circles" />
         <div>
-          {circles && circles.length ? (
-            <CsRow gap="lg">
-              {circles.map((circle) => {
-                return (
-                  <>
-                    {circle.name && (
-                      <>
-                        <Suspense
-                          key={circle.id}
-                          fallback={<div>Loading...</div>}
-                        >
-                          <CsCircleCard
-                            name={circle.name}
-                            href={`/${circle.name}`}
-                            image={circle.image}
-                            description={circle.description}
-                          />
-                        </Suspense>
-                      </>
-                    )}
-                  </>
-                );
-              })}
-            </CsRow>
+          {circles ? (
+            circles.length ? (
+              <CsRow gap="lg">
+                {circles.map((circle) => {
+                  return (
+                    <>
+                      {circle.name && (
+                        <>
+                          <Suspense
+                            key={circle.id}
+                            fallback={<div>Loading...</div>}
+                          >
+                            <CsCircleCard
+                              name={circle.name}
+                              href={`/${circle.name}`}
+                              image={circle.image}
+                              description={circle.description}
+                            />
+                          </Suspense>
+                        </>
+                      )}
+                    </>
+                  );
+                })}
+              </CsRow>
+            ) : (
+              <p>0 circles found</p>
+            )
           ) : (
             <p>no circles</p>
           )}
