@@ -25,7 +25,7 @@ const CsCircleCard = (props: Props) => {
   return (
     <>
       <Link href={href} className="block w-60">
-        <Card>
+        <Card className="overflow-hidden">
           <div className="w-full h-48 overflow-hidden flex items-center justify-center shadow">
             {image && (
               <Image
