@@ -1,5 +1,4 @@
 import { CsMusicPlayer } from "@/components/circles/CsMusicPlayer";
-import { CsHeading } from "@/components/circles/CsHeading";
 import { CsMain } from "@/components/layouts/CsMain";
 import {
   ResizableHandle,
@@ -9,28 +8,10 @@ import {
 import { CsDrawerUploadMusic } from "@/components/circles/CsDrawerUploadMusic";
 import { CsRootLayoutInternal } from "@/components/layouts/CsRootLayoutInternal";
 import useGetUser from "@/hooks/use-get-user";
-import {
-  Bird,
-  Book,
-  Bot,
-  Code2,
-  CornerDownLeft,
-  LifeBuoy,
-  Mic,
-  Paperclip,
-  Rabbit,
-  Settings,
-  Settings2,
-  Share,
-  SquareTerminal,
-  SquareUser,
-  Triangle,
-  Turtle,
-} from "lucide-react";
+import { CornerDownLeft, Mic, Paperclip } from "lucide-react";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -46,20 +27,12 @@ import {
   TooltipTrigger,
   TooltipProvider,
 } from "@/components/ui/tooltip";
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CsProfile } from "@/components/circles/CsProfile";
 
 export default async function Circle() {
   const { loginUserId } = await useGetUser();
+  
   return (
     <CsRootLayoutInternal loginUserId={loginUserId} currentPage="circles">
       <CsMain>

@@ -1,15 +1,9 @@
-import { CsHeading } from "@/components/circles/CsHeading";
-import { CsDrawerUserEdit } from "@/components/circles/CsDrawerUserEdit";
 import { CsMain } from "@/components/layouts/CsMain";
 import { CsRootLayoutInternal } from "@/components/layouts/CsRootLayoutInternal";
 import useGetUser from "@/hooks/use-get-user";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Label } from "@radix-ui/react-label";
-import { CsStack } from "@/components/layouts/CsStack";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { CsRow } from "@/components/layouts/CsRow";
-import { US } from "country-flag-icons/react/3x2";
-import Link from "next/link";
+import { CsDrawerProfileUpdate } from "@/components/circles/CsDrawerProfileUpdate";
+
 import {
   Table,
   TableBody,
@@ -57,10 +51,9 @@ export default async function Profile(props: Props) {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="w-[100px]">date</TableHead>
+                  <TableHead>date</TableHead>
                   <TableHead>event</TableHead>
                   <TableHead>venue</TableHead>
-                  <TableHead className="text-right">link</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -68,7 +61,6 @@ export default async function Profile(props: Props) {
                   <TableCell className="font-medium">11Dec. 2024</TableCell>
                   <TableCell>Special Event</TableCell>
                   <TableCell>@AmazingVenue</TableCell>
-                  <TableCell className="text-right">detail</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
@@ -117,6 +109,8 @@ export default async function Profile(props: Props) {
           </TabsContent>
         </Tabs>
       </CsMain>
+
+      <CsDrawerProfileUpdate />
     </CsRootLayoutInternal>
   );
 }
