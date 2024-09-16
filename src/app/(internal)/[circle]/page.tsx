@@ -29,10 +29,11 @@ import {
 } from "@/components/ui/tooltip";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CsProfile } from "@/components/circles/CsProfile";
+import { CsStack } from "@/components/layouts/CsStack";
 
 export default async function Circle() {
   const { loginUserId } = await useGetUser();
-  
+
   return (
     <CsRootLayoutInternal loginUserId={loginUserId} currentPage="circles">
       <CsMain>
@@ -46,13 +47,14 @@ export default async function Circle() {
           <TabsContent value="session" className="w-full h-full">
             <ResizablePanelGroup direction="horizontal">
               <ResizablePanel>
-                <div>
-                  <div>
+                <div className="pr-4">
+                  <CsStack gap="md">
                     <CsMusicPlayer></CsMusicPlayer>
                     <CsMusicPlayer></CsMusicPlayer>
                     <CsMusicPlayer></CsMusicPlayer>
-                  </div>
-                  <CsDrawerUploadMusic />
+                  </CsStack>
+
+                  {/* <CsDrawerUploadMusic /> */}
                 </div>
               </ResizablePanel>
               <ResizableHandle />
