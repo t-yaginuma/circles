@@ -4,10 +4,12 @@ type Props = {
   children: React.ReactNode;
   className?: string;
   gap?: "xs" | "sm" | "md" | "lg";
+  isSpaceBetween?: boolean;
+  isItemCenter?: boolean;
 };
 
 const CsRow = (props: Props) => {
-  const { children, gap, className } = props;
+  const { children, gap, className, isSpaceBetween, isItemCenter } = props;
 
   return (
     <>
@@ -18,6 +20,8 @@ const CsRow = (props: Props) => {
           { "gap-2": gap === "sm" },
           { "gap-4": gap === "md" },
           { "gap-6": gap === "lg" },
+          { "justify-between": isSpaceBetween },
+          { "items-center": isItemCenter },
           className
         )}
       >
