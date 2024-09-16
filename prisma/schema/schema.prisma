@@ -31,12 +31,13 @@ model ProfileSchedule {
 }
 
 model Profile {
-  id    String @unique
+  id    String @id @unique
   email String  
   name  String?
+  description  String?
   image String?
   city String?
-  country String?
+  countryCode String?
   Links ProfileLink[]
   Schedules ProfileSchedule[]
   @@schema("public")
