@@ -17,14 +17,12 @@ import { CsTextLink } from "./CsTextLink";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useModalStore } from "@/store/modal-handle";
-import { useAuthStore } from "@/store/auth";
 
 type Props = {};
 
 const CsDrawerPasswordReIssue = (props: Props) => {
   const {} = props;
   const storeModal = useModalStore();
-  const storeAuth = useAuthStore();
   const [message, setMessage] = useState("");
   const { toast } = useToast();
 
@@ -37,7 +35,7 @@ const CsDrawerPasswordReIssue = (props: Props) => {
     // user.then((test) => {
     //     console.log("-------------");
 
-    //     storeAuth.setIsAuthenticated(true);
+    //     storeAuth.setloginUserId(true);
     //     storeModal.setIsOpenLoginModal(false);
 
     //     toast({

@@ -25,14 +25,13 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CsAccountMenu } from "@/components/circles/CsAccountMenu";
 import { CsButton } from "@/components/circles/CsButton";
-import { useAuthStore } from "@/store/auth";
 import { useModalStore } from "@/store/modal-handle";
 
 type Props = {
-  isAuthenticated?: boolean;
+  loginUserId?: string;
 };
 const CsHeader = (props: Props) => {
-  const { isAuthenticated } = props;
+  const { loginUserId } = props;
   const storeModal = useModalStore();
 
   return (
@@ -134,7 +133,7 @@ const CsHeader = (props: Props) => {
         </div>
 
         {(() => {
-          if (isAuthenticated) {
+          if (loginUserId) {
             return (
               <>
                 <Link href="/messages">
@@ -147,7 +146,7 @@ const CsHeader = (props: Props) => {
                     <span className="sr-only">Toggle notifications</span>
                   </Button>
                 </Link>
-                <CsAccountMenu />
+                <CsAccountMenu loginUserId={loginUserId} />
               </>
             );
           } else {

@@ -14,16 +14,22 @@ import { Button } from "@/components/ui/button";
 import { signOut } from "@/actions/auth";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
-import { useAuthStore } from "@/store/auth";
+import { useMeStore } from "@/store/me";
 
-type Props = {};
+type Props = { loginUserId?: string };
 
 const CsAccountMenu = (props: Props) => {
-  const {} = props;
+  const { loginUserId } = props;
   const router = useRouter();
   const { toast } = useToast();
-  const store = useAuthStore();
+  const meStore = useMeStore();
 
+  // if (meStore.uid === null && loginUserId) {
+
+  // } else {
+  //   meStore.initializeUid();
+  // }
+  // meStore.setUid(loginUserId ? loginUserId : null);
   const logoutHandle = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
@@ -53,7 +59,9 @@ const CsAccountMenu = (props: Props) => {
         <DropdownMenuTrigger asChild>
           <Button variant="secondary" size="icon" className="rounded-full">
             <Avatar className="w-full h-full">
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+              {meStore.image && (
+                <AvatarImage src={meStore.image} alt="@shadcn" />
+              )}
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <span className="sr-only">Toggle user menu</span>
@@ -63,7 +71,7 @@ const CsAccountMenu = (props: Props) => {
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <Link href="/profile">Your Profile</Link>
+            <Link href={`/profile/${loginUserId}`}>Your Profile</Link>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>

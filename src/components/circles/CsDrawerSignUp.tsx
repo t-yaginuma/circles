@@ -4,11 +4,9 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
 } from "@/components/ui/drawer";
 import { CsStack } from "../layouts/CsStack";
 import { CsForm } from "./CsForm";
@@ -17,30 +15,47 @@ import { signUp } from "@/actions/auth";
 import { CsTextLink } from "./CsTextLink";
 import { CsButton } from "./CsButton";
 import { CsCheckbox } from "./CsCheckbox";
-import { CsDrawerLogin } from "./CsDrawerLogin";
 import { useState } from "react";
 import { useModalStore } from "@/store/modal-handle";
+import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 
 const CsDrawerSignUp = (props: Props) => {
   const {} = props;
-  const store = useModalStore();
+  const storeModal = useModalStore();
+  const { toast } = useToast();
   const [isChecked, setIsChecked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   const handleAction = async (formData: FormData) => {
-    setIsLoading(true);
-    const test = await signUp(formData);
-    setIsLoading(false);
+    const data = await signUp(formData);
+    console.log(data);
+
+    if (data && data.error && data.error.status) {
+      console.log("--------");
+      console.log(data.error.status);
+      router.push("/error");
+      storeModal.setIsOpenLoginModal(false);
+      toast({
+        title: `${data.error.status}`,
+      });
+      return;
+    }
+
+    storeModal.setIsOpenLoginModal(false);
+    toast({
+      title: "created your account successfully!",
+    });
   };
 
   return (
     <Drawer
-      open={store.isOpenSignUpModal}
-      onOpenChange={store.setIsOpenSignUpModal}
+      open={storeModal.isOpenSignUpModal}
+      onOpenChange={storeModal.setIsOpenSignUpModal}
     >
       <DrawerContent>
         <CsForm action={handleAction}>
@@ -97,8 +112,8 @@ const CsDrawerSignUp = (props: Props) => {
                     text="Already have an account?"
                     href="#"
                     onClick={() => {
-                      store.setIsOpenSignUpModal(false);
-                      store.setIsOpenLoginModal(true);
+                      storeModal.setIsOpenSignUpModal(false);
+                      storeModal.setIsOpenLoginModal(true);
                     }}
                   />
                 </CsStack>

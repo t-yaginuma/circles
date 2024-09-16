@@ -3,15 +3,15 @@ import { CsFooter } from "@/components/circles/CsFooter";
 
 type Props = {
   children: React.ReactNode;
-  isAuthenticated: boolean;
+  loginUserId?: string;
 };
 
 const CsRootLayout = (props: Props) => {
-  const { children, isAuthenticated } = props;
+  const { children, loginUserId } = props;
 
   return (
     <>
-      <CsHeader isAuthenticated={isAuthenticated} />
+      <CsHeader loginUserId={loginUserId} />
       {children}
       <CsFooter />
     </>

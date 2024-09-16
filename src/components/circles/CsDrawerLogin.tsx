@@ -7,7 +7,6 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
 } from "@/components/ui/drawer";
 import { CsStack } from "../layouts/CsStack";
 import { CsForm } from "./CsForm";
@@ -15,26 +14,26 @@ import { CsInput } from "./CsInput";
 import { login } from "@/actions/auth";
 import { CsButton } from "./CsButton";
 import { CsTextLink } from "./CsTextLink";
-import { useEffect, useState } from "react";
-import { CsDrawerSignUp } from "@/components/circles/CsDrawerSignUp";
 import { useToast } from "@/hooks/use-toast";
 import { useModalStore } from "@/store/modal-handle";
-import { useAuthStore } from "@/store/auth";
+import { useMeStore } from "@/store/me";
 
 type Props = {};
 
 const CsDrawerLogin = (props: Props) => {
   const {} = props;
   const storeModal = useModalStore();
-  const storeAuth = useAuthStore();
-  const [message, setMessage] = useState("");
   const { toast } = useToast();
+  const storeMe = useMeStore();
 
   const handleAction = async (formData: FormData) => {
-    const isLoggedIn = await login(formData);
-
-    if (isLoggedIn) {
+    const profile = await login(formData);
+    console.log(profile);
+    if (profile && profile.id) {
       storeModal.setIsOpenLoginModal(false);
+      storeMe.setUid(profile.id);
+      storeMe.setImage(profile.image);
+
       toast({
         title: "Logged-in Successfully!",
         // description: "Friday, February 10, 2023 at 5:57 PM",
@@ -46,9 +45,9 @@ const CsDrawerLogin = (props: Props) => {
     //   user.then((test) => {
     //     console.log("hit");
     //     console.log(storeAuth);
-    //     storeAuth.setIsAuthenticated(true);
+    //     storeAuth.setloginUserId(true);
     //     storeModal.setIsOpenLoginModal(false);
-    //     console.log(storeAuth.isAuthenticated);
+    //     console.log(storeAuth.loginUserId);
     //     toast({
     //       title: "Logged-in Successfully!",
     //       // description: "Friday, February 10, 2023 at 5:57 PM",
