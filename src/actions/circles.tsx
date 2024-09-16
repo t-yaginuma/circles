@@ -37,20 +37,12 @@ export async function postCircles(formData: FormData) {
     const fileName = `${uuidv4()}`;
     const extension = imageName.ext;
 
-    // console.log("-----------");
-    // console.log(extension);
-    // console.log(description);
-    // console.log(visibility);
-    const { data, error } = await supabase.storage
+    await supabase.storage
       .from(bucketName)
       .upload(`${dir}/${fileName}${extension}`, image, {
         cacheControl: "3600",
         upsert: false,
       });
-
-    console.log("---sdsds----");
-    console.log(data?.fullPath);
-    // console.log(error);
 
     const {
       data: { publicUrl },

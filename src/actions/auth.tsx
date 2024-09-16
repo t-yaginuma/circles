@@ -4,59 +4,66 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { PrismaClient } from "@prisma/client";
 import { createClient } from "@/libs/supabase/server";
+import { getProfile } from "@/actions/profile";
 
+const supabase = createClient();
 const prisma = new PrismaClient();
 
 export async function login(formData: FormData) {
-  const supabase = createClient();
-
   // type-casting here for convenience
   // in practice, you should validate your inputs
-  const data = {
+  const _formData = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
   };
 
-  const { error } = await supabase.auth.signInWithPassword(data);
+  const { data, error } = await supabase.auth.signInWithPassword(_formData);
+  const userId = data.user?.id;
+
+  const profile = userId && (await getProfile(userId));
+  console.log("----------");
+  console.log(profile);
+
+  return profile;
 
   if (error) {
     redirect("/error");
   } else {
-    return true;
   }
-
-  // revalidatePath("/", "layout");
-  // redirect("/");
 }
 
 export async function signUp(formData: FormData) {
-  const supabase = createClient();
-
+  console.log("----");
   // type-casting here for convenience
   // in practice, you should validate your inputs
-  const data = {
+  const _formData = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
   };
 
-  const dataProfile = await prisma.profile.create({
-    data: {
-      id: "",
-      email: "",
-      name: "",
-      image: "",
-      city: "",
-      country: "",
-    },
-  });
-  const { error } = await supabase.auth.signUp(data);
+  const { data, error } = await supabase.auth.signUp(_formData);
 
   if (error) {
-    redirect("/error");
+    console.log("--------");
+    console.log(error.status);
   }
 
-  revalidatePath("/", "layout");
-  redirect("/");
+  const dataProfile = data.user
+    ? await prisma.profile.create({
+        data: {
+          id: data.user.id,
+          email: formData.get("email") as string,
+        },
+      })
+    : undefined;
+
+  return {
+    dataProfile: dataProfile && dataProfile,
+    error: {
+      status: error && error.status,
+      code: error && error.code,
+    },
+  };
 }
 
 export async function signOut() {
