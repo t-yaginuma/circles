@@ -6,6 +6,7 @@ type State = {
   isOpenSignUpModal: boolean;
   isOpenPasswordReIssueModal: boolean;
   isOpenEstablishCircleModal: boolean;
+  isOpenProfileUpdateModal: boolean;
 };
 
 type Action = {
@@ -13,6 +14,7 @@ type Action = {
   setIsOpenSignUpModal: (by: boolean) => void;
   setIsOpenPasswordReIssueModal: (by: boolean) => void;
   setIsOpenEstablishCircleModal: (by: boolean) => void;
+  setIsOpenProfileUpdateModal: (by: boolean) => void;
 };
 
 export const useModalStore = create<State & Action>((set) => ({
@@ -20,10 +22,13 @@ export const useModalStore = create<State & Action>((set) => ({
   isOpenSignUpModal: false,
   isOpenPasswordReIssueModal: false,
   isOpenEstablishCircleModal: false,
+  isOpenProfileUpdateModal: false,
   setIsOpenLoginModal: (by) => set((state) => ({ isOpenLoginModal: by })),
   setIsOpenSignUpModal: (by) => set((state) => ({ isOpenSignUpModal: by })),
   setIsOpenPasswordReIssueModal: (by) =>
     set((state) => ({ isOpenPasswordReIssueModal: by })),
   setIsOpenEstablishCircleModal: (by) =>
     set((state) => ({ isOpenEstablishCircleModal: by })),
+  setIsOpenProfileUpdateModal: (by) =>
+    set((state) => ({ isOpenProfileUpdateModal: by })),
 }));
