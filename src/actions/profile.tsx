@@ -6,13 +6,6 @@ import path from "path";
 
 const prisma = new PrismaClient();
 
-type File = {
-  size: number;
-  type: string;
-  name: string;
-  lastModified: number;
-};
-
 export async function getProfile(userId: string) {
   try {
     const data = await prisma.profile.findUnique({
@@ -30,7 +23,6 @@ export async function getProfile(userId: string) {
 
 export async function updateProfile(userId: string, formData: FormData) {
   const supabase = createClient();
-
   try {
     const _formData = {
       image: formData.get("image") as File,

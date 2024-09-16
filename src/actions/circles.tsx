@@ -15,14 +15,9 @@ export async function getCircles() {
   }
 }
 
-type File = {
-  size: number;
-  type: string;
-  name: string;
-  lastModified: number;
-};
-
 export async function postCircles(formData: FormData) {
+  const supabase = createClient();
+
   try {
     const image = formData.get("image") as File;
     const imageName = path.parse(image.name);
@@ -31,7 +26,6 @@ export async function postCircles(formData: FormData) {
     const description = formData.get("description") as string;
     const visibility = formData.get("visibility") as string;
 
-    const supabase = createClient();
     const bucketName = "images";
     const dir = "circles";
     const fileName = `${uuidv4()}`;

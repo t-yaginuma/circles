@@ -6,10 +6,10 @@ import { PrismaClient } from "@prisma/client";
 import { createClient } from "@/libs/supabase/server";
 import { getProfile } from "@/actions/profile";
 
-const supabase = createClient();
 const prisma = new PrismaClient();
 
 export async function login(formData: FormData) {
+  const supabase = createClient();
   // type-casting here for convenience
   // in practice, you should validate your inputs
   const _formData = {
@@ -33,6 +33,7 @@ export async function login(formData: FormData) {
 }
 
 export async function signUp(formData: FormData) {
+  const supabase = createClient();
   console.log("----");
   // type-casting here for convenience
   // in practice, you should validate your inputs
