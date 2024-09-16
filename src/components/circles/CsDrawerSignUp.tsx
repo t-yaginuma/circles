@@ -59,7 +59,7 @@ const CsDrawerSignUp = (props: Props) => {
     >
       <DrawerContent>
         <CsForm action={handleAction}>
-          <div className="m-auto w-[640px] py-8">
+          <div className="m-auto lg:w-[640px] lg:py-8">
             <CsStack gap="sm">
               <DrawerHeader>
                 <DrawerTitle className="text-xl">

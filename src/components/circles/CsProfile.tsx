@@ -1,5 +1,5 @@
-import { CsHeading } from "@/components/circles/CsHeading";
-import { CsDrawerProfileUpdate } from "@/components/circles/CsDrawerProfileUpdate";
+"use client";
+
 import { CsStack } from "@/components/layouts/CsStack";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CsRow } from "@/components/layouts/CsRow";
@@ -7,9 +7,11 @@ import { CsCountryFlag } from "@/components/circles/CsCountryFlag";
 
 import Link from "next/link";
 import { CsTextLink } from "@/components/circles/CsTextLink";
+import { CsButton } from "@/components/circles/CsButton";
 import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import country from "country-list-js";
+import { useModalStore } from "@/store/modal-handle";
 
 type Link = {
   label: string;
@@ -28,6 +30,11 @@ type Props = {
 
 const CsProfile = (props: Props) => {
   const { image, name, description, city, countryCode, links, isMe } = props;
+  const storeModal = useModalStore();
+
+  const onCLick = () => {
+    storeModal.setIsOpenProfileUpdateModal(true);
+  };
 
   return (
     <CsRow gap="md" className="w-full flex-nowrap">
@@ -37,20 +44,26 @@ const CsProfile = (props: Props) => {
       </Avatar>
 
       <CsStack gap="sm">
-        <div className="flex gap-4 items-center">
+        <div className="flex items-center">
           <h1 className="text-2xl font-semibold leading-none tracking-tight">
             {name ? name : "no name"}
           </h1>
-          {!isMe && (
-            <Link href="/messages">
+          {!isMe ? (
+            <Link href="/messages" className="ml-4">
               <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
                 <Mail className="h-4 w-4" />
                 <span className="sr-only">Toggle notifications</span>
               </Button>
             </Link>
+          ) : (
+            <CsButton
+              className="hidden lg:block"
+              type="button"
+              text="Edit Your Profile"
+              variant="link"
+              onClick={onCLick}
+            />
           )}
-
-          <CsDrawerProfileUpdate />
         </div>
 
         <div className="flex items-center">

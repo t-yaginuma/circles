@@ -18,40 +18,32 @@ import { CsFileUploader } from "./CsFileUploader";
 import { CsButton } from "./CsButton";
 import { CsComboBox } from "@/components/circles/CsComboBox";
 import { CsSelect } from "@/components/circles/CsSelect";
-import country from "country-list-js";
 import { updateProfile } from "@/actions/profile";
 import { useMeStore } from "@/store/me";
+import countryList from "react-select-country-list";
+import { useModalStore } from "@/store/modal-handle";
 
 type Props = {};
 
 const CsDrawerProfileUpdate = (props: Props) => {
   const {} = props;
   const storeMe = useMeStore();
+  const storeModal = useModalStore();
 
   const handleAction = async (formData: FormData) => {
-    const returnValue = await updateProfile(storeMe.uid, formData);
+    const returnValue =
+      storeMe.uid && (await updateProfile(storeMe.uid, formData));
   };
 
   const options = useMemo(() => {
-    const countries = country.all;
-    const keys = Object.keys(countries);
-    const rv = keys.sort().map((key) => {
-      const country = countries[key];
-      return {
-        value: country.iso2,
-        label: country.name,
-      };
-    });
-
-    return rv;
+    return countryList().getData(), [];
   }, []);
 
   return (
-    <Drawer>
-      <DrawerTrigger asChild>
-        <CsButton type="button" text="Edit Your Profile" variant="link" />
-      </DrawerTrigger>
-
+    <Drawer
+      open={storeModal.isOpenProfileUpdateModal}
+      onOpenChange={storeModal.setIsOpenProfileUpdateModal}
+    >
       <DrawerContent>
         <CsForm action={handleAction}>
           <div className="m-auto w-[640px] py-8">
