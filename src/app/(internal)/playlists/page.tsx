@@ -7,13 +7,10 @@ import { CsRootLayoutInternal } from "@/components/layouts/CsRootLayoutInternal"
 import useGetUser from "@/hooks/use-get-user";
 
 export default async function Playlists() {
-  const { isAuthenticated } = await useGetUser();
+  const { loginUserId } = await useGetUser();
 
   return (
-    <CsRootLayoutInternal
-      isAuthenticated={isAuthenticated}
-      currentPage="playlists"
-    >
+    <CsRootLayoutInternal loginUserId={loginUserId} currentPage="playlists">
       <CsMain>
         <CsHeading heading="Playlists" />
         <div>

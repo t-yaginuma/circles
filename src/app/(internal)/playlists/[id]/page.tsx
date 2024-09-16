@@ -59,13 +59,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CsProfile } from "@/components/circles/CsProfile";
 
 export default async function Playlists() {
-  const { isAuthenticated } = await useGetUser();
+  const { loginUserId } = await useGetUser();
 
   return (
-    <CsRootLayoutInternal
-      isAuthenticated={isAuthenticated}
-      currentPage="playlists"
-    >
+    <CsRootLayoutInternal loginUserId={loginUserId} currentPage="playlists">
       <CsMain>
         <CsProfile />
         <Tabs defaultValue="playlist" className="w-full h-full">

@@ -54,12 +54,9 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default async function Messages() {
-  const { isAuthenticated } = await useGetUser();
+  const { loginUserId } = await useGetUser();
   return (
-    <CsRootLayoutInternal
-      isAuthenticated={isAuthenticated}
-      currentPage="dashboard"
-    >
+    <CsRootLayoutInternal loginUserId={loginUserId} currentPage="dashboard">
       <CsMain>
         <CsHeading
           heading="Messages"

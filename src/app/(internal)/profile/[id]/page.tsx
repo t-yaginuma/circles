@@ -19,21 +19,32 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { CsTextLink } from "@/components/circles/CsTextLink";
-import { Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { CsProfile } from "@/components/circles/CsProfile";
+import { getProfile } from "@/actions/profile";
 
-export default async function Profile() {
-  const { isAuthenticated } = await useGetUser();
-
+type Props = {
+  params: {
+    id: string;
+  };
+};
+export default async function Profile(props: Props) {
+  const { params } = props;
+  const { loginUserId } = await useGetUser();
+  console.log("page-----");
+  console.log(params.id);
+  const data = await getProfile(params.id);
+  console.log(data?.email);
   return (
-    <CsRootLayoutInternal
-      isAuthenticated={isAuthenticated}
-      currentPage="dashboard"
-    >
+    <CsRootLayoutInternal loginUserId={loginUserId} currentPage="dashboard">
       <CsMain>
-        <CsProfile />
+        <CsProfile
+          image={data?.image}
+          name={data?.name}
+          description={data?.description}
+          city={data?.city}
+          countryCode={data?.countryCode}
+          isMe={loginUserId === params.id}
+        />
 
         <Tabs defaultValue="schedule" className="w-full mt-4">
           <TabsList>
@@ -42,6 +53,7 @@ export default async function Profile() {
             <TabsTrigger value="playlist">Playlist</TabsTrigger>
           </TabsList>
           <TabsContent value="schedule">
+            Coming soon.
             <Table>
               <TableHeader>
                 <TableRow>
@@ -62,8 +74,8 @@ export default async function Profile() {
             </Table>
           </TabsContent>
           <TabsContent value="music">
+            Coming soon.
             <Table>
-              <TableCaption>Live Schedules</TableCaption>
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-[100px]">date</TableHead>
@@ -83,8 +95,8 @@ export default async function Profile() {
             </Table>
           </TabsContent>
           <TabsContent value="playlist">
+            Coming soon.
             <Table>
-              <TableCaption>Live Schedules</TableCaption>
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-[100px]">date</TableHead>
@@ -104,7 +116,6 @@ export default async function Profile() {
             </Table>
           </TabsContent>
         </Tabs>
-        <CsDrawerUserEdit />
       </CsMain>
     </CsRootLayoutInternal>
   );

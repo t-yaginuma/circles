@@ -2,9 +2,9 @@ import { CsRootLayout } from "@/components/layouts/CsRootLayout";
 import useGetUser from "@/hooks/use-get-user";
 
 export default async function ErrorPage() {
-  const { isAuthenticated } = await useGetUser();
+  const { loginUserId } = await useGetUser();
   return (
-    <CsRootLayout isAuthenticated={isAuthenticated}>
+    <CsRootLayout loginUserId={loginUserId}>
       <p>Sorry, something went wrong</p>
     </CsRootLayout>
   );

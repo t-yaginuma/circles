@@ -45,13 +45,10 @@ import { CsRootLayoutInternal } from "@/components/layouts/CsRootLayoutInternal"
 import useGetUser from "@/hooks/use-get-user";
 
 export default async function Dashboard() {
-  const { isAuthenticated } = await useGetUser();
+  const { loginUserId } = await useGetUser();
 
   return (
-    <CsRootLayoutInternal
-      isAuthenticated={isAuthenticated}
-      currentPage="dashboard"
-    >
+    <CsRootLayoutInternal loginUserId={loginUserId} currentPage="dashboard">
       <CsMain>
         <CsHeading heading="DashBoard" />
         <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">

@@ -59,12 +59,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CsProfile } from "@/components/circles/CsProfile";
 
 export default async function Circle() {
-  const { isAuthenticated } = await useGetUser();
+  const { loginUserId } = await useGetUser();
   return (
-    <CsRootLayoutInternal
-      isAuthenticated={isAuthenticated}
-      currentPage="circles"
-    >
+    <CsRootLayoutInternal loginUserId={loginUserId} currentPage="circles">
       <CsMain>
         <CsProfile />
         <Tabs defaultValue="session" className="w-full h-full">

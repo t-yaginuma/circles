@@ -10,13 +10,11 @@ import useGetUser from "@/hooks/use-get-user";
 
 export default async function Circles() {
   const circles = await getCircles();
-  const { isAuthenticated } = await useGetUser();
+
+  const { loginUserId } = await useGetUser();
 
   return (
-    <CsRootLayoutInternal
-      isAuthenticated={isAuthenticated}
-      currentPage="circles"
-    >
+    <CsRootLayoutInternal loginUserId={loginUserId} currentPage="circles">
       <CsMain>
         <CsHeading heading="Circles" />
         <div>
@@ -53,7 +51,7 @@ export default async function Circles() {
           )}
         </div>
 
-        <CsButtonEstablishCircle isAuthenticated={isAuthenticated} />
+        <CsButtonEstablishCircle loginUserId={loginUserId} />
       </CsMain>
     </CsRootLayoutInternal>
   );

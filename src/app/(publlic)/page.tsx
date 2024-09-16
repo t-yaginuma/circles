@@ -5,10 +5,10 @@ import { CsRootLayout } from "@/components/layouts/CsRootLayout";
 import useGetUser from "@/hooks/use-get-user";
 
 export default async function Home() {
-  const { isAuthenticated } = await useGetUser();
+  const { loginUserId } = await useGetUser();
 
   return (
-    <CsRootLayout isAuthenticated={isAuthenticated}>
+    <CsRootLayout loginUserId={loginUserId}>
       <CsMain>
         <CsHeading
           heading="Welcome to Circles"
