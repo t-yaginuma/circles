@@ -6,6 +6,7 @@ import { Inbox, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CsAccountMenu } from "@/components/circles/CsAccountMenu";
 import { CsButton } from "@/components/circles/CsButton";
+import { CsButtonIcon } from "@/components/circles/CsButtonIcon";
 import { useModalStore } from "@/store/modal-handle";
 import { CsSidebar } from "@/components/circles/CsSidebar";
 
@@ -48,16 +49,10 @@ const CsHeader = (props: Props) => {
           if (loginUserId) {
             return (
               <>
-                <Link href="/messages">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="ml-auto h-8 w-8"
-                  >
-                    <Inbox className="h-4 w-4" />
-                    <span className="sr-only">Toggle notifications</span>
-                  </Button>
-                </Link>
+                <CsButtonIcon
+                  href="/messages"
+                  icon={<Inbox className="h-4 w-4" />}
+                />
                 <CsAccountMenu loginUserId={loginUserId} />
               </>
             );

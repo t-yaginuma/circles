@@ -10,6 +10,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { CsRow } from "@/components/layouts/CsRow";
 import Link from "next/link";
 import { Heart, Play, Pause } from "lucide-react";
+import { CsDropdownMenu } from "@/components/circles/CsDroopDownMenu";
+import { CsProfile } from "@/components/circles/CsProfile";
 
 type Props = {
   // isPlaying: boolean;
@@ -34,24 +36,41 @@ const CsMusicPlayer = (props: Props) => {
     <>
       <CsStack gap="sm">
         <CsRow isSpaceBetween isItemCenter>
-          <CsRow gap="sm">
-            <div className="flex items-center gap-4">
-              <Avatar className="hidden h-9 w-9 sm:flex">
-                <AvatarImage
-                  src="https://dwixiyvbqbrsernfiuwj.supabase.co/storage/v1/object/public/images/profiles/9fcd1d35-1a07-4efd-9eba-56c3173de79c.jpg"
-                  alt="@shadcn"
-                />
-                <AvatarFallback>no Image</AvatarFallback>
-              </Avatar>
-            </div>
+          <div>
+            <CsProfile
+              name="yagi"
+              subtext="Song1"
+              countryCode="JP"
+              image="https://dwixiyvbqbrsernfiuwj.supabase.co/storage/v1/object/public/images/profiles/9fcd1d35-1a07-4efd-9eba-56c3173de79c.jpg"
+            />
+          </div>
 
-            <div>
-              <div>Yagi</div>
-              <div>Song1</div>
-            </div>
-          </CsRow>
-
-          <Heart />
+          <div>
+            <CsDropdownMenu
+              menuItems={[
+                {
+                  label: "Like",
+                  href: "#",
+                },
+                {
+                  label: "Share",
+                  href: "#",
+                },
+                {
+                  label: "Add PlayList",
+                  href: "#",
+                },
+                {
+                  label: "Edit",
+                  href: "#",
+                },
+                {
+                  label: "Delete",
+                  href: "#",
+                },
+              ]}
+            />
+          </div>
         </CsRow>
         <div className="flex w-full gap-2">
           <button onClick={onPlayPause}>

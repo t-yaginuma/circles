@@ -5,11 +5,21 @@ type Props = {
   className?: string;
   gap?: "xs" | "sm" | "md" | "lg";
   isSpaceBetween?: boolean;
+  isItemStart?: boolean;
   isItemCenter?: boolean;
+  isNoWrap?: boolean;
 };
 
 const CsRow = (props: Props) => {
-  const { children, gap, className, isSpaceBetween, isItemCenter } = props;
+  const {
+    children,
+    gap,
+    className,
+    isSpaceBetween,
+    isItemStart,
+    isItemCenter,
+    isNoWrap,
+  } = props;
 
   return (
     <>
@@ -21,7 +31,9 @@ const CsRow = (props: Props) => {
           { "gap-4": gap === "md" },
           { "gap-6": gap === "lg" },
           { "justify-between": isSpaceBetween },
+          { "items-start": isItemStart },
           { "items-center": isItemCenter },
+          { "flex-nowrap": isNoWrap },
           className
         )}
       >
