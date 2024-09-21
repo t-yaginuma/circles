@@ -13,7 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { CsProfile } from "@/components/circles/CsProfile";
+import { CsHeadings } from "@/components/circles/CsHeadings";
 import { getProfile } from "@/actions/profile";
 
 type Props = {
@@ -31,13 +31,15 @@ export default async function Profile(props: Props) {
   return (
     <CsRootLayoutInternal loginUserId={loginUserId} currentPage="dashboard">
       <CsMain>
-        <CsProfile
+        <CsHeadings
           image={data?.image}
           name={data?.name}
           description={data?.description}
           city={data?.city}
           countryCode={data?.countryCode}
-          isMe={loginUserId === params.id}
+          user={{
+            isMe: loginUserId === params.id,
+          }}
         />
 
         <Tabs defaultValue="schedule" className="w-full mt-4">

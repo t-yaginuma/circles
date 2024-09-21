@@ -56,7 +56,7 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CsProfile } from "@/components/circles/CsProfile";
+import { CsHeadings } from "@/components/circles/CsHeadings";
 
 export default async function Playlists() {
   const { loginUserId } = await useGetUser();
@@ -64,7 +64,7 @@ export default async function Playlists() {
   return (
     <CsRootLayoutInternal loginUserId={loginUserId} currentPage="playlists">
       <CsMain>
-        <CsProfile />
+        <CsHeadings />
         <Tabs defaultValue="playlist" className="w-full h-full">
           <TabsList>
             <TabsTrigger value="playlist">Playlist</TabsTrigger>
